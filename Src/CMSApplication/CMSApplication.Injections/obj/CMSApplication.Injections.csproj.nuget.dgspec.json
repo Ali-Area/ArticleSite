@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj": {}
+    "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Injections\\CMSApplication.Injections.csproj": {}
   },
   "projects": {
-    "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj": {
+    "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Injections\\CMSApplication.Injections.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj",
-        "projectName": "CMSApplication.Domain",
-        "projectPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj",
+        "projectUniqueName": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Injections\\CMSApplication.Injections.csproj",
+        "projectName": "CMSApplication.Injections",
+        "projectPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Injections\\CMSApplication.Injections.csproj",
         "packagesPath": "C:\\Users\\Paris\\.nuget\\packages\\",
-        "outputPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\obj\\",
+        "outputPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Injections\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,13 +43,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNet.Identity.Core": {
+            "Autofac": {
               "target": "Package",
-              "version": "[2.2.3, )"
+              "version": "[6.3.0, )"
             },
-            "Microsoft.AspNet.Identity.EntityFramework": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
-              "version": "[2.2.3, )"
+              "version": "[6.0.0, )"
             }
           },
           "imports": [

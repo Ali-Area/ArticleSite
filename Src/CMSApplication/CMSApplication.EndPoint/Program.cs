@@ -1,5 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using CMSApplication.Domain.Entities.MainEntities.UserEntities;
+using CMSApplication.Persistance.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,9 +29,36 @@ void ConfigureServices(IServiceCollection services)
 {
 
     services.AddControllersWithViews();
+    services.AddIdentity<User, Role>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+    services.ConfigureApplicationCookie(options =>
+    {
+        options.LoginPath = "/Identity/SignIn";
+        options.LogoutPath = "/Home/Index";
+        options.ExpireTimeSpan = TimeSpan.FromDays(7);
+        options.AccessDeniedPath = "/Identity/AccessDenied";
+    });
+
 
 
 }
+
+
+
+void ConfigureContainer(WebApplicationBuilder builder)
+{
+
+    builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+    builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+    {
+
+    });
+
+}
+
+
 
 
 
@@ -71,15 +100,3 @@ void Configure(WebApplication builder)
 }
 
 
-
-void ConfigureContainer(WebApplicationBuilder builder)
-{
-
-    builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-
-    builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
-    {
-       
-    });
-
-}

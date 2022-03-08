@@ -4,14 +4,14 @@
     "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj": {}
   },
   "projects": {
-    "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj": {
+    "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj",
-        "projectName": "CMSApplication.Persistance",
-        "projectPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj",
+        "projectUniqueName": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj",
+        "projectName": "CMSApplication.Domain",
+        "projectPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj",
         "packagesPath": "C:\\Users\\Paris\\.nuget\\packages\\",
-        "outputPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\obj\\",
+        "outputPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -42,6 +42,111 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNet.Identity.Core": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj",
+        "projectName": "CMSApplication.Persistance",
+        "projectPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj",
+        "packagesPath": "C:\\Users\\Paris\\.nuget\\packages\\",
+        "outputPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Paris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj": {
+                "projectPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Domain\\CMSApplication.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Castle.Windsor": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

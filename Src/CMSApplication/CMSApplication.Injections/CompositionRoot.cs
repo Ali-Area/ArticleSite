@@ -1,6 +1,8 @@
 ﻿using Autofac;
+using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using CMSApplication.Persistance;
 using CMSApplication.Persistance.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,12 @@ namespace CMSApplication.Injections
                    .AsSelf()
                    .InstancePerLifetimeScope();
 
+
+            builder.RegisterType<UserManager<User>>()
+                .As <UserManager<User>>();
+
+            builder.RegisterType<SignInManager<User>>()
+                .As<SignInManager<User>>();
             
 
 

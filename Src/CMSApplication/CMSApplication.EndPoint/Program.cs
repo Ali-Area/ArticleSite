@@ -7,18 +7,20 @@ using CMSApplication.Persistance.Context;
 var builder = WebApplication.CreateBuilder(args);
 
 
-ConfigureContainer(builder);
 
 
 // Add services to the container.
 ConfigureServices(builder.Services);
 
+
+ConfigureContainer(builder);
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 Configure(app);
-
-
 
 
 
@@ -30,6 +32,7 @@ void ConfigureServices(IServiceCollection services)
 {
 
     services.AddControllersWithViews();
+
     services.AddIdentity<User, Role>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 
@@ -44,6 +47,7 @@ void ConfigureServices(IServiceCollection services)
 
 
 }
+
 
 
 
@@ -87,20 +91,23 @@ void Configure(WebApplication builder)
     {
 
         endpoints.MapControllerRoute(
-                name : "areas",
-                pattern : "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
             );
 
 
         endpoints.MapControllerRoute(
-                name : "default",
-                pattern : "{controller=Home}/{action=Index}/{id?}"
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}"
             );
 
     });
 
 
     app.Run();
+
+
+
 }
 
 

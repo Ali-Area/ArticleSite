@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "20f98e6d-1b36-40ca-846f-93d2489215d3": {
+      "ProjectGuid": "20f98e6d-1b36-40ca-846f-93d2489215d3",
+      "DisplayName": "CMSApplication.Persistance",
+      "ColorIndex": 0
+    },
+    "8e8baff1-0fd1-4533-86cb-21b05d6bb63f": {
+      "ProjectGuid": "8e8baff1-0fd1-4533-86cb-21b05d6bb63f",
+      "DisplayName": "CMSApplication.Domain",
+      "ColorIndex": 1
+    },
+    "83bf239c-c2f3-48e8-ae9a-12af0cb64311": {
+      "ProjectGuid": "83bf239c-c2f3-48e8-ae9a-12af0cb64311",
+      "DisplayName": "CMSApplication.Application",
+      "ColorIndex": 2
+    },
+    "0ac5b35c-cbcc-4abb-900e-aacf184a617c": {
+      "ProjectGuid": "0ac5b35c-cbcc-4abb-900e-aacf184a617c",
+      "DisplayName": "CMSApplication.CommonTools",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

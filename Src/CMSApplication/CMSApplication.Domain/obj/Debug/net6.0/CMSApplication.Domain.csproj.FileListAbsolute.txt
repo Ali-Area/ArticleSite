@@ -1,0 +1,12 @@
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\bin\Debug\net6.0\CMSApplication.Domain.deps.json
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\bin\Debug\net6.0\CMSApplication.Domain.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\bin\Debug\net6.0\ref\CMSApplication.Domain.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\bin\Debug\net6.0\CMSApplication.Domain.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\obj\Debug\net6.0\CMSApplication.Domain.csproj.AssemblyReference.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\obj\Debug\net6.0\CMSApplication.Domain.GeneratedMSBuildEditorConfig.editorconfig
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\obj\Debug\net6.0\CMSApplication.Domain.AssemblyInfoInputs.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\obj\Debug\net6.0\CMSApplication.Domain.AssemblyInfo.cs
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\obj\Debug\net6.0\CMSApplication.Domain.csproj.CoreCompileInputs.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\obj\Debug\net6.0\CMSApplication.Domain.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\obj\Debug\net6.0\ref\CMSApplication.Domain.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Domain\obj\Debug\net6.0\CMSApplication.Domain.pdb

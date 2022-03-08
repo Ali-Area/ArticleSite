@@ -1,0 +1,12 @@
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.Application.deps.json
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.Application.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\ref\CMSApplication.Application.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.Application.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.csproj.AssemblyReference.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.GeneratedMSBuildEditorConfig.editorconfig
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.AssemblyInfoInputs.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.AssemblyInfo.cs
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.csproj.CoreCompileInputs.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\ref\CMSApplication.Application.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.pdb

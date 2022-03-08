@@ -20,7 +20,22 @@
       "ProjectGuid": "0ac5b35c-cbcc-4abb-900e-aacf184a617c",
       "DisplayName": "CMSApplication.CommonTools",
       "ColorIndex": 3
+    },
+    "f3beb87b-6915-467c-b64d-14cbbf78a148": {
+      "ProjectGuid": "f3beb87b-6915-467c-b64d-14cbbf78a148",
+      "DisplayName": "CMSApplication.EndPoint",
+      "ColorIndex": 4
+    },
+    "c6863c3e-ec8e-420f-aa8b-051ad53d3584": {
+      "ProjectGuid": "c6863c3e-ec8e-420f-aa8b-051ad53d3584",
+      "DisplayName": "CMSApplication.Injections",
+      "ColorIndex": 5
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 6
 }

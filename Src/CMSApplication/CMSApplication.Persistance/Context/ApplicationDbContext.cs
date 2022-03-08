@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CMSApplication.Persistance.Context
 {
-    public class ApplicationDbContext : IdentityDbContext, IUnitOfWork
+    public class ApplicationDbContext : IdentityDbContext<User, Role, String>, IUnitOfWork
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -28,12 +28,14 @@ namespace CMSApplication.Persistance.Context
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Article>().HasQueryFilter(a => !a.IsDeleted);
-            builder.Entity<Comment>().HasQueryFilter(c => !c.IsDeleted);
-            builder.Entity<User>().HasQueryFilter(u => !u.IsDeleted);
-
+            builder.ConfigEntityFilters();
+            builder.ConfigEntitySeeds();
+            builder.ConfigEntityRelations();
 
         }
+
+         
+
 
 
         public bool IsBegan => (Database.CurrentTransaction != null);

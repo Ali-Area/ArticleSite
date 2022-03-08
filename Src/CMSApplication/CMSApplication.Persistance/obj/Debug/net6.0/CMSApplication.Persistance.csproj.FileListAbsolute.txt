@@ -1,0 +1,17 @@
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\bin\Debug\net6.0\CMSApplication.Persistance.deps.json
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\bin\Debug\net6.0\CMSApplication.Persistance.runtimeconfig.json
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\bin\Debug\net6.0\CMSApplication.Persistance.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\bin\Debug\net6.0\ref\CMSApplication.Persistance.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\bin\Debug\net6.0\CMSApplication.Persistance.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\bin\Debug\net6.0\CMSApplication.Domain.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\bin\Debug\net6.0\CMSApplication.Domain.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.csproj.AssemblyReference.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.AssemblyInfoInputs.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.AssemblyInfo.cs
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.csproj.CoreCompileInputs.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.csproj.CopyComplete
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\ref\CMSApplication.Persistance.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Persistance\obj\Debug\net6.0\CMSApplication.Persistance.genruntimeconfig.cache

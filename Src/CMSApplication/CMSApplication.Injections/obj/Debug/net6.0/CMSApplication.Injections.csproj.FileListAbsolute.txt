@@ -1,0 +1,17 @@
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Injections.deps.json
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Injections.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\ref\CMSApplication.Injections.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Injections.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Domain.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Persistance.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Persistance.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Domain.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.csproj.AssemblyReference.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.GeneratedMSBuildEditorConfig.editorconfig
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.AssemblyInfoInputs.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.AssemblyInfo.cs
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.csproj.CoreCompileInputs.cache
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.csproj.CopyComplete
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\ref\CMSApplication.Injections.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.pdb

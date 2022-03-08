@@ -1,6 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
+using CMSApplication.Injections;
 using CMSApplication.Persistance.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,6 +54,9 @@ void ConfigureContainer(WebApplicationBuilder builder)
 
     builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
     {
+
+        builder.RegisterContainerDependency();
+
 
     });
 

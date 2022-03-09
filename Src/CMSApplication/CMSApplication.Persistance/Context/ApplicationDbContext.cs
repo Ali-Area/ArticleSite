@@ -1,5 +1,6 @@
 ﻿using CMSApplication.Domain.Entities.MainEntities.ArticleEntities;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CMSApplication.Persistance.Context
 {
-    public class ApplicationDbContext : IdentityDbContext, IUnitOfWork
+    public class ApplicationDbContext : IdentityDbContext<User, Role, string>, IUnitOfWork
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CMSApplication.Persistance.Migrations
 {
-    public partial class First : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace CMSApplication.Persistance.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -223,12 +224,12 @@ namespace CMSApplication.Persistance.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "IsDeleted", "Name", "NormalizedName", "UserId" },
-                values: new object[] { "4cca0775-c6fd-4743-86ab-002b0476f837", "7e92ab8c-d69d-461e-9249-569753c548de", false, "Admin", null, null });
+                values: new object[] { "admin", "da043e25-783d-446a-a44f-598dadacaec2", false, "Admin", "ADMIN", null });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "IsDeleted", "Name", "NormalizedName", "UserId" },
-                values: new object[] { "9b711449-aa49-4ac3-b0dd-cd2993979055", "05896467-8576-471d-a6d5-4d1a2557581b", false, "User", null, null });
+                values: new object[] { "user", "722bdcbf-5cdf-45d0-839f-233123ebc33b", false, "User", "USER", null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Article_UserId",

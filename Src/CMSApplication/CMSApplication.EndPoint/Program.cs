@@ -49,9 +49,8 @@ void ConfigureServices(IServiceCollection services, IConfiguration config)
         options.LoginPath = "/Identity/SignIn";
         options.LogoutPath = "/Home/Index";
         options.ExpireTimeSpan = TimeSpan.FromDays(7);
-        options.AccessDeniedPath = "/Identity/AccessDenied";
+        options.AccessDeniedPath = "/Users/AccessDenied";
     });
-
 
 
 }
@@ -92,6 +91,7 @@ void Configure(WebApplication builder)
 
     app.UseRouting();
 
+    app.UseAuthentication();
     app.UseAuthorization();
 
 

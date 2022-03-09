@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMSApplication.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220308200351_First")]
-    partial class First
+    [Migration("20220309192000_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -152,17 +152,19 @@ namespace CMSApplication.Persistance.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4cca0775-c6fd-4743-86ab-002b0476f837",
-                            ConcurrencyStamp = "7e92ab8c-d69d-461e-9249-569753c548de",
+                            Id = "admin",
+                            ConcurrencyStamp = "da043e25-783d-446a-a44f-598dadacaec2",
                             IsDeleted = false,
-                            Name = "Admin"
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "9b711449-aa49-4ac3-b0dd-cd2993979055",
-                            ConcurrencyStamp = "05896467-8576-471d-a6d5-4d1a2557581b",
+                            Id = "user",
+                            ConcurrencyStamp = "722bdcbf-5cdf-45d0-839f-233123ebc33b",
                             IsDeleted = false,
-                            Name = "User"
+                            Name = "User",
+                            NormalizedName = "USER"
                         });
                 });
 
@@ -193,6 +195,10 @@ namespace CMSApplication.Persistance.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)

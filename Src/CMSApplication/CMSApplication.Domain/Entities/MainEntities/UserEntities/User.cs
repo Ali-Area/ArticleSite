@@ -14,7 +14,7 @@ namespace CMSApplication.Domain.Entities.MainEntities.UserEntities
     {
 
         public bool IsDeleted { get; set; }
-
+        public string Name { get; set; }
 
 
         #region relations

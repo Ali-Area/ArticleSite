@@ -4,6 +4,7 @@ using CMSApplication.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMSApplication.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220309210202_addingroles")]
+    partial class addingroles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,15 +153,16 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "194c9b05-6824-4fea-8223-61393c1dbbc7",
+                            ConcurrencyStamp = "1b5e056c-181d-487a-9a3d-fedf322d3b35",
                             IsDeleted = false,
                             Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            NormalizedName = "ADMIN",
+                            UserId = "AdminUser"
                         },
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "7743ae81-3f25-440e-bef3-d80fb7b23c6f",
+                            ConcurrencyStamp = "5f178cb4-5ecc-4dac-9768-4fdc3fa9bc88",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -240,6 +243,26 @@ namespace CMSApplication.Persistance.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "AdminUser",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b5e86dea-7299-4210-93e9-6acc95297d6d",
+                            Email = "ali7139.r@gmail.com",
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            Name = "Admin",
+                            NormalizedEmail = "ALI7139.R@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAENeY1tAu4a0wGl0F7dOT+4LUgiXhv5NsQdB8V+5ua5RTnl75o+TAvO3JRgoWe3wPXQ==",
+                            PhoneNumberConfirmed = false,
+                            RoleId = "admin",
+                            SecurityStamp = "b809446c-68e1-4db6-9144-577dcf183069",
+                            TwoFactorEnabled = false,
+                            UserName = "ali7139.r@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

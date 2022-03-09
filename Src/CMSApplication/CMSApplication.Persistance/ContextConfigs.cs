@@ -22,9 +22,12 @@ namespace CMSApplication.Persistance
         public static void ConfigEntitySeeds(this ModelBuilder builder)
         {
             builder.Entity<Role>().HasData(
-                    new Role () { Id = Guid.NewGuid().ToString(), IsDeleted = false, Name = "Admin" },
-                    new Role () { Id = Guid.NewGuid().ToString(), IsDeleted = false, Name = "User" }
+                    new Role() { Id = "admin", Name = "Admin", NormalizedName = "ADMIN" },
+                    new Role() { Id = "user", Name = "User", NormalizedName = "USER" }
                 );
+
+
+
         }
 
         public static void ConfigEntityRelations(this ModelBuilder builder)

@@ -54,12 +54,33 @@
                         </nav>
                     </div>
                     <div class="col-md-3 col-4 text-start">
-                        <div class="top-account">
 
-                            <a href="#" class="text-dark"><i class="bi bi-box-arrow-right"></i></a>
-                            &nbsp;
-                            <a href="#" class="text-dark"><i class="bi bi-box-arrow-in-right"></i></a>
-                        </div>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            <div class="top-account">
+                                @if(User.Claims.FirstOrDefault(claim => claim.Type == "Role").Value == "Admin")
+                                {
+                                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="text-dark">Admin Area</a>
+                                }
+                                &nbsp;&nbsp;
+                                <a asp-controller="Users" asp-action="SignOut" class="text-dark"><i class="bi bi-box-arrow-in-right"></i></a>
+                                &nbsp;&nbsp;
+                                <a class="text-dark">
+                                    <img style="border-radius: 50%;" class="col-1" src="~/SiteTemplate/img/userAvatar.png" >
+                                    <span class="small">@User.Claims.FirstOrDefault(claim => claim.Type == "Name").Value</span></a>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="top-account">
+                                <a asp-controller="Users" asp-action="SignUp" class="text-dark"><i class="bi bi-box-arrow-right"></i></a>
+                            </div>
+                        }
+
+
                     </div>
                 </div>
             </div>

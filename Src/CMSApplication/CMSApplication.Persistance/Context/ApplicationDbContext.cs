@@ -17,11 +17,6 @@ namespace CMSApplication.Persistance.Context
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(connectionString: "Server = (localdb)\\MSSQLLocalDB; DataBase = CMSApplicationDataBase; Integrated Security = true;");
-        }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

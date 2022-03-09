@@ -7,9 +7,9 @@ namespace CMSApplication.EndPoint.Controllers
     public class UsersController : Controller
     {
 
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<User> _userManager;
 
-        public UsersController(UserManager<IdentityUser> userManager)
+        public UsersController(UserManager<User> userManager)
         {
             this._userManager = userManager;
         }

@@ -7,11 +7,11 @@ namespace CMSApplication.EndPoint.Controllers
     public class UsersController : Controller
     {
 
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public UsersController(UserManager<IdentityUser> userManager)
         {
-            _userManager = userManager;
+            this._userManager = userManager;
         }
 
         public async Task<IActionResult> SignIn()

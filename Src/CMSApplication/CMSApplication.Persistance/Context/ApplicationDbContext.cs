@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CMSApplication.Persistance.Context
 {
-    public class ApplicationDbContext : IdentityDbContext<User, Role, String>, IUnitOfWork
+    public class ApplicationDbContext : IdentityDbContext, IUnitOfWork
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {

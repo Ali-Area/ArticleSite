@@ -24,12 +24,6 @@ namespace CMSApplication.Injections
                    .AsSelf()
                    .InstancePerLifetimeScope();
 
-
-            builder.RegisterType<UserManager<User>>()
-                .As <UserManager<User>>();
-
-            builder.RegisterType<SignInManager<User>>()
-                .As<SignInManager<User>>();
             
 
 

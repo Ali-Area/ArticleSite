@@ -222,9 +222,7 @@ F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\CMSA
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\CMSApplication.EndPoint.RazorAssemblyInfo.cs
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\staticwebassets.build.json
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\staticwebassets.development.json
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\scopedcss\bundle\CMSApplication.EndPoint.styles.css
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\scopedcss\projectbundle\CMSApplication.EndPoint.bundle.scp.css
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\CMSApplication.EndPoint.csproj.CopyComplete
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\CMSApplication.EndPoint.dll
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\obj\Debug\net6.0\ref\CMSApplication.EndPoint.dll

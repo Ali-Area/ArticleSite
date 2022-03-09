@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using CMSApplication.Injections;
 using CMSApplication.Persistance.Context;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
+ConfigureContainer(builder);
 ConfigureServices(builder.Services);
 
 
-ConfigureContainer(builder);
+
 
 
 
@@ -33,7 +35,7 @@ void ConfigureServices(IServiceCollection services)
 
     services.AddControllersWithViews();
 
-    services.AddIdentity<User, Role>().AddEntityFrameworkStores<ApplicationDbContext>();
+    services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 
     services.ConfigureApplicationCookie(options =>

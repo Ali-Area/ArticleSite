@@ -27,7 +27,7 @@
     <![endif]-->
 </head>
 
-<body data-theme="dark">
+<body>
 
     <!-- preloader -->
     <div class="preloader">
@@ -87,7 +87,7 @@
     <!-- customizer -->
     @*<partial name="Partials/_Customizer" />*@
 
-
+    @await RenderSectionAsync("Scripts", false);
 
 
 

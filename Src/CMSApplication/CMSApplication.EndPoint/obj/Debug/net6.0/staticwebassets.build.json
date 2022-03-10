@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ou0gUn2UzcxjKIppU+Pvw6L9D6ugUc9/CAysFiGsiAo=",
+  "Hash": "jE3/Kt3JFg6QdfLhOvo2BJVuPUp2+diSC7Yi43dI4W8=",
   "Source": "CMSApplication.EndPoint",
   "BasePath": "_content/CMSApplication.EndPoint",
   "Mode": "Default",
@@ -80187,6 +80187,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\SiteTemplate\\style.css"
+    },
+    {
+      "Identity": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\Sweetalert2\\sweetalert2.min.css",
+      "SourceId": "CMSApplication.EndPoint",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\",
+      "BasePath": "_content/CMSApplication.EndPoint",
+      "RelativePath": "Sweetalert2/sweetalert2.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Sweetalert2\\sweetalert2.min.css"
+    },
+    {
+      "Identity": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\Sweetalert2\\sweetalert2.min.js",
+      "SourceId": "CMSApplication.EndPoint",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\",
+      "BasePath": "_content/CMSApplication.EndPoint",
+      "RelativePath": "Sweetalert2/sweetalert2.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Sweetalert2\\sweetalert2.min.js"
     }
   ]
 }

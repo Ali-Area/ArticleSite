@@ -1,4 +1,7 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
+using CMSApplication.Application.Contracts.Admin;
+using CMSApplication.Application.Services.Admin;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using CMSApplication.Persistance;
 using CMSApplication.Persistance.Context;
@@ -9,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace CMSApplication.Injections
 {
@@ -24,8 +28,12 @@ namespace CMSApplication.Injections
                    .AsSelf()
                    .InstancePerLifetimeScope();
 
-            
 
+            builder.RegisterType<UsersService>()
+                   .As<IUsersService>()
+                   .EnableInterfaceInterceptors().
+                   InterceptedBy(typeof(UnitOfWorkInterceptor))
+                   .InstancePerLifetimeScope();
 
             return builder;
         }

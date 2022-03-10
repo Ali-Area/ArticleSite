@@ -13,7 +13,8 @@ namespace CMSApplication.Domain.Entities.MainEntities.UserEntities
     public class User : IdentityUser
     {
 
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
+        public bool IsActive { get; set; } = true;
         public string Name { get; set; }
 
 

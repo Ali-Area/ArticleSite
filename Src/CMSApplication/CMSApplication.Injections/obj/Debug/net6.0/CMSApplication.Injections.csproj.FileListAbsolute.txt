@@ -15,3 +15,7 @@ F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CM
 F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.dll
 F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\ref\CMSApplication.Injections.dll
 F:\Main Project\Src\CMSApplication\CMSApplication.Injections\obj\Debug\net6.0\CMSApplication.Injections.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Application.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.CommonTools.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.Application.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Injections\bin\Debug\net6.0\CMSApplication.CommonTools.pdb

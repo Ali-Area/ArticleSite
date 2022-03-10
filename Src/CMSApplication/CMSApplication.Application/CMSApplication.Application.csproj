@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\Site\" />
+    <Folder Include="Dtos\Site\" />
+    <Folder Include="Services\Site\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CMSApplication.CommonTools\CMSApplication.CommonTools.csproj" />
+    <ProjectReference Include="..\CMSApplication.Persistance\CMSApplication.Persistance.csproj" />
+  </ItemGroup>
+
 </Project>

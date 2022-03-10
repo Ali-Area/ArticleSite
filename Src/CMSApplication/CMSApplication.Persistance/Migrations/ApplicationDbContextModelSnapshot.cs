@@ -151,7 +151,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "194c9b05-6824-4fea-8223-61393c1dbbc7",
+                            ConcurrencyStamp = "463f824f-35f7-49f2-957f-b5bd7b9c0c94",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -159,7 +159,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "7743ae81-3f25-440e-bef3-d80fb7b23c6f",
+                            ConcurrencyStamp = "22bf3594-6237-4309-9b92-7a69ee00401f",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -183,6 +183,9 @@ namespace CMSApplication.Persistance.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")

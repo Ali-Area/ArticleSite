@@ -276,3 +276,8 @@ F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSA
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.Injections.pdb
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.Persistance.pdb
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Autofac.Extras.DynamicProxy.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.Application.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.CommonTools.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.Application.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.CommonTools.pdb

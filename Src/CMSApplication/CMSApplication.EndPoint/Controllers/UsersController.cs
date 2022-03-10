@@ -114,7 +114,7 @@ namespace CMSApplication.EndPoint.Controllers
         public async Task<IdentityResult> CreateUser(SignUpViewModel model)
         {
 
-            if(!await CheckUserNotExist(model.Email))
+            if(await CheckUserNotExist(model.Email))
             {
 
                 var role = await _roleManager.FindByIdAsync("user");
@@ -169,7 +169,7 @@ namespace CMSApplication.EndPoint.Controllers
 
         public async Task<bool> CheckUserNotExist(string email)
         {
-            if(await _userManager.FindByEmailAsync(email) != null)
+            if(await _userManager.FindByEmailAsync(email) == null)
             {
                 return true;
             }

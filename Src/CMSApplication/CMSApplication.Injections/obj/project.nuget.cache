@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "AekSx8pXqSzaylfJSQgTSIxib1aavUxip96d9XtD0XRyw/IyuKh0ffRzYi7YBP6LLUESemewhSL4vIxbM1xMZg==",
+  "dgSpecHash": "ZUXhClxL7BR0hiUMpv+iCe5dbhVb5CU0QMRR9akxfxglK6sqXLUPvhvXJzkjhE035+0PN3AydSaZmLC0rLUl8w==",
   "success": true,
   "projectFilePath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Injections\\CMSApplication.Injections.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Paris\\.nuget\\packages\\autofac\\6.3.0\\autofac.6.3.0.nupkg.sha512",
+    "C:\\Users\\Paris\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.2.0\\autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",
+    "C:\\Users\\Paris\\.nuget\\packages\\autofac.extras.dynamicproxy\\6.0.1\\autofac.extras.dynamicproxy.6.0.1.nupkg.sha512",
     "C:\\Users\\Paris\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\Paris\\.nuget\\packages\\castle.windsor\\5.1.1\\castle.windsor.5.1.1.nupkg.sha512",
     "C:\\Users\\Paris\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

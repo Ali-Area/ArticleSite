@@ -14,6 +14,32 @@
           "lib/net5.0/Autofac.dll": {}
         }
       },
+      "Autofac.Extensions.DependencyInjection/7.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "6.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Autofac.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Autofac.Extensions.DependencyInjection.dll": {}
+        }
+      },
+      "Autofac.Extras.DynamicProxy/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "6.2.0",
+          "Castle.Core": "4.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Autofac.Extras.DynamicProxy.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Autofac.Extras.DynamicProxy.dll": {}
+        }
+      },
       "Castle.Core/4.4.1": {
         "type": "package",
         "dependencies": {
@@ -2418,6 +2444,30 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "CMSApplication.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CMSApplication.CommonTools": "1.0.0",
+          "CMSApplication.Persistance": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CMSApplication.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CMSApplication.Application.dll": {}
+        }
+      },
+      "CMSApplication.CommonTools/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/CMSApplication.CommonTools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CMSApplication.CommonTools.dll": {}
+        }
+      },
       "CMSApplication.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2471,6 +2521,47 @@
         "lib/netstandard2.1/Autofac.dll",
         "lib/netstandard2.1/Autofac.pdb",
         "lib/netstandard2.1/Autofac.xml"
+      ]
+    },
+    "Autofac.Extensions.DependencyInjection/7.2.0": {
+      "sha512": "S2Jor8pTV+8QSs96ENq/FhGdnrWsntGs93z0OXYlIivUWGPNXQHNCjFPfSBeBlHClvJFEXMvlkY32bAKy2YkPg==",
+      "type": "package",
+      "path": "autofac.extensions.dependencyinjection/7.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",
+        "autofac.extensions.dependencyinjection.nuspec",
+        "icon.png",
+        "lib/net5.0/Autofac.Extensions.DependencyInjection.dll",
+        "lib/net5.0/Autofac.Extensions.DependencyInjection.pdb",
+        "lib/net5.0/Autofac.Extensions.DependencyInjection.xml",
+        "lib/net6.0/Autofac.Extensions.DependencyInjection.dll",
+        "lib/net6.0/Autofac.Extensions.DependencyInjection.pdb",
+        "lib/net6.0/Autofac.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.pdb",
+        "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.xml",
+        "lib/netstandard2.1/Autofac.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.1/Autofac.Extensions.DependencyInjection.pdb",
+        "lib/netstandard2.1/Autofac.Extensions.DependencyInjection.xml"
+      ]
+    },
+    "Autofac.Extras.DynamicProxy/6.0.1": {
+      "sha512": "+ulCOXUjbJ5dljBPZf3gRxQNPRGqg/h1cNTZ4SpXK3qiamTfRsW3gXs2w/IJ+CIDmHrFGYXLqzNd5etvzwB8kA==",
+      "type": "package",
+      "path": "autofac.extras.dynamicproxy/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "autofac.extras.dynamicproxy.6.0.1.nupkg.sha512",
+        "autofac.extras.dynamicproxy.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Autofac.Extras.DynamicProxy.dll",
+        "lib/netstandard2.0/Autofac.Extras.DynamicProxy.xml",
+        "lib/netstandard2.1/Autofac.Extras.DynamicProxy.dll",
+        "lib/netstandard2.1/Autofac.Extras.DynamicProxy.xml"
       ]
     },
     "Castle.Core/4.4.1": {
@@ -7916,6 +8007,16 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "CMSApplication.Application/1.0.0": {
+      "type": "project",
+      "path": "../CMSApplication.Application/CMSApplication.Application.csproj",
+      "msbuildProject": "../CMSApplication.Application/CMSApplication.Application.csproj"
+    },
+    "CMSApplication.CommonTools/1.0.0": {
+      "type": "project",
+      "path": "../CMSApplication.CommonTools/CMSApplication.CommonTools.csproj",
+      "msbuildProject": "../CMSApplication.CommonTools/CMSApplication.CommonTools.csproj"
+    },
     "CMSApplication.Domain/1.0.0": {
       "type": "project",
       "path": "../CMSApplication.Domain/CMSApplication.Domain.csproj",
@@ -7930,6 +8031,9 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Autofac >= 6.3.0",
+      "Autofac.Extensions.DependencyInjection >= 7.2.0",
+      "Autofac.Extras.DynamicProxy >= 6.0.1",
+      "CMSApplication.Application >= 1.0.0",
       "CMSApplication.Persistance >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 6.0.0"
     ]
@@ -7965,6 +8069,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Application\\CMSApplication.Application.csproj": {
+              "projectPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Application\\CMSApplication.Application.csproj"
+            },
             "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj": {
               "projectPath": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.Persistance\\CMSApplication.Persistance.csproj"
             }
@@ -7984,6 +8091,14 @@
           "Autofac": {
             "target": "Package",
             "version": "[6.3.0, )"
+          },
+          "Autofac.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[7.2.0, )"
+          },
+          "Autofac.Extras.DynamicProxy": {
+            "target": "Package",
+            "version": "[6.0.1, )"
           },
           "Microsoft.Extensions.DependencyInjection.Abstractions": {
             "target": "Package",

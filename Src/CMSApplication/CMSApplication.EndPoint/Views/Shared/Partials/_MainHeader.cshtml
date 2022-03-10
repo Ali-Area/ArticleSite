@@ -60,9 +60,9 @@
                         {
 
                             <div class="top-account">
-                                @if(User.Claims.FirstOrDefault(claim => claim.Type == "Role").Value == "Admin")
+                                @if(User.Claims.FirstOrDefault(claim => claim.Type == "Role").Value.ToLower() == "admin")
                                 {
-                                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="text-dark">Admin Area</a>
+                                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="text-dark"><i class="bi bi-gear"></i></a>
                                 }
                                 &nbsp;&nbsp;
                                 <a asp-controller="Users" asp-action="SignOut" class="text-dark"><i class="bi bi-box-arrow-in-right"></i></a>

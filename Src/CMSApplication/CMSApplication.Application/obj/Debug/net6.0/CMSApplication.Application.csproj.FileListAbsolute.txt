@@ -10,3 +10,10 @@ F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\C
 F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.dll
 F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\ref\CMSApplication.Application.dll
 F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.CommonTools.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.Domain.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.Persistance.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.CommonTools.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.Persistance.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\bin\Debug\net6.0\CMSApplication.Domain.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.Application\obj\Debug\net6.0\CMSApplication.Application.csproj.CopyComplete

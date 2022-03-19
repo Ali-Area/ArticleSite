@@ -1,4 +1,5 @@
 ﻿using CMSApplication.Application.Contracts.Admin;
+using CMSApplication.Application.Dtos.Admin.UserServiceDtos.GetUserInfoDtos;
 using CMSApplication.Application.Dtos.Admin.UserServiceDtos.GetUserListDtos;
 using CMSApplication.CommonTools;
 using CMSApplication.CommonTools.Dtos;
@@ -54,7 +55,10 @@ namespace CMSApplication.Application.Services.Admin
             return new GetUserListResultDto()
             {
                 RowsCount = rowsCount,
-                Users = userList
+                Users = userList,
+                Page = request.Page,
+                PageSize = request.PageSize,
+                SearchKey = request.SearchKey
             };
         }
 
@@ -75,31 +79,40 @@ namespace CMSApplication.Application.Services.Admin
 
         public async Task<ResultDto> DeleteUser(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null) return new ResultDto() { IsSuccess = false, Message = "User not Found." };
+            var user = _context.Users.Find(userId);
+            if (user == null) return new ResultDto() { IsSuccess = false, Message = "user not found." }; 
+
+            user.IsDeleted = true;
+            user.DeleteDate = DateTime.Now;
 
 
-            var userRoles = await _userManager.GetRolesAsync(user);
+            // --- delete users all data --- //
 
-            if(userRoles.Count() > 0)
-            {
-                foreach (var role in userRoles.ToList())
-                {
-                    await _userManager.RemoveFromRoleAsync(user, role);
-                }
-            }
+            //var userRoles = await _userManager.GetRolesAsync(user);
+
+            //if(userRoles.Count() > 0)
+            //{
+            //    foreach (var role in userRoles.ToList())
+            //    {
+            //        await _userManager.RemoveFromRoleAsync(user, role);
+            //    }
+            //}
 
 
+ 
+            //var actionResult = await _userManager.DeleteAsync(user);
 
-            var actionResult = await _userManager.DeleteAsync(user);
-            if (!actionResult.Succeeded)
-            {
-                return new ResultDto()
-                {
-                    IsSuccess = false,
-                    Message = "Error Occured."
-                };
-            }
+            //if (!actionResult.Succeeded)
+            //{
+            //    return new ResultDto()
+            //    {
+            //        IsSuccess = false,
+            //        Message = "Error Occured."
+            //    };
+            //}
+
+            // --- delete users all data --- //
+
             return new ResultDto()
             {
                 IsSuccess = true,
@@ -111,6 +124,44 @@ namespace CMSApplication.Application.Services.Admin
         {
             throw new NotImplementedException();
         }
+
+        public ResultDto<UserInfoDto> GetUserInfo(string userId)
+        {
+            var user = _context.Users
+                .Include(user => user.Articles)
+                .Include(user => user.Role)
+                .Where(user => user.Id == userId)
+                .FirstOrDefault();
+                
+            if(user == null)
+            {
+                return new ResultDto<UserInfoDto>()
+                {
+                    IsSuccess = false,
+                    Message = "User not Found.",
+                };
+            }
+
+
+            return new ResultDto<UserInfoDto>()
+            {
+                IsSuccess = true,
+                Message = "",
+                Data = new UserInfoDto()
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    CreateDate = user.CreateDate,
+                    IsActive = user.IsActive,
+                    PostCount = user.Articles.Count() > 0 ? user.Articles.Count() : 0,
+                    ProfileImage = user.ProfileImage,
+                    Role = user.Role.Name.ToString(),
+                    UpdateDate = user.UpdateDate
+                }
+            };
+        }
+
 
 
     }

@@ -16,6 +16,10 @@ namespace CMSApplication.Domain.Entities.MainEntities.UserEntities
         public bool IsDeleted { get; set; } = false;
         public bool IsActive { get; set; } = true;
         public string Name { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
+        public DateTime CreateDate { get; set; } = DateTime.Now;
+        public string? ProfileImage { get; set; }
 
 
         #region relations
@@ -23,7 +27,6 @@ namespace CMSApplication.Domain.Entities.MainEntities.UserEntities
         public virtual ICollection<Article> Articles { get; set; }
 
         public virtual Role Role { get; set; }
-        [ForeignKey("RoleId")]
         public string RoleId { get; set; }
 
 

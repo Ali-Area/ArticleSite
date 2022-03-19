@@ -19,6 +19,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/Main Project/Src/CMSApplication/CMSApplication.EndPoint/Areas/Admin/Views/Shared/Components/PaginationComponent/PaginationComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcUGFnaW5hdGlvbkNvbXBvbmVudFxQYWdpbmF0aW9uQ29tcG9uZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Main Project/Src/CMSApplication/CMSApplication.EndPoint/Areas/Admin/Views/Shared/Partials/_Customizer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9DdXN0b21pemVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,6 +57,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/Main Project/Src/CMSApplication/CMSApplication.EndPoint/Areas/Admin/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Main Project/Src/CMSApplication/CMSApplication.EndPoint/Areas/Admin/Views/Users/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcVXNlclByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Main Project/Src/CMSApplication/CMSApplication.EndPoint/Areas/Admin/Views/_ViewImports.cshtml]

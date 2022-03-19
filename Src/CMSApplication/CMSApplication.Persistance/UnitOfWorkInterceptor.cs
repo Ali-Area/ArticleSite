@@ -26,7 +26,7 @@ namespace CMSApplication.Persistance
             {
                 if (ShouldProceedInTransactin(invocation))
                 {
-                    ProceedWithoutTransaction(invocation);
+                    ProceedWithTransaction(invocation);
                     return;
                 }
 
@@ -60,7 +60,6 @@ namespace CMSApplication.Persistance
                 {
                     _context.Begin();
                 }
-
                 invocaiton.Proceed();
 
                 _context.Commit();

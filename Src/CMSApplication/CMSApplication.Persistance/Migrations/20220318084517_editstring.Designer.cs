@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMSApplication.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220310170050_proptouser")]
-    partial class proptouser
+    [Migration("20220318084517_editstring")]
+    partial class editstring
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -133,9 +133,6 @@ namespace CMSApplication.Persistance.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
@@ -143,17 +140,13 @@ namespace CMSApplication.Persistance.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
-
                     b.ToTable("AspNetRoles", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "463f824f-35f7-49f2-957f-b5bd7b9c0c94",
+                            ConcurrencyStamp = "32c3e241-a5c8-415f-b337-6b25b548825a",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -161,7 +154,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "22bf3594-6237-4309-9b92-7a69ee00401f",
+                            ConcurrencyStamp = "ce570c40-f42a-4a57-a09f-660b3357a392",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -179,6 +172,12 @@ namespace CMSApplication.Persistance.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeleteDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -222,7 +221,7 @@ namespace CMSApplication.Persistance.Migrations
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -230,11 +229,18 @@ namespace CMSApplication.Persistance.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -243,6 +249,8 @@ namespace CMSApplication.Persistance.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -381,13 +389,15 @@ namespace CMSApplication.Persistance.Migrations
                     b.Navigation("ParentCommant");
                 });
 
-            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.Role", b =>
+            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", b =>
                 {
-                    b.HasOne("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", "User")
-                        .WithOne("Role")
-                        .HasForeignKey("CMSApplication.Domain.Entities.MainEntities.UserEntities.Role", "UserId");
+                    b.HasOne("CMSApplication.Domain.Entities.MainEntities.UserEntities.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -451,12 +461,14 @@ namespace CMSApplication.Persistance.Migrations
                     b.Navigation("Comments");
                 });
 
+            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.Role", b =>
+                {
+                    b.Navigation("Users");
+                });
+
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", b =>
                 {
                     b.Navigation("Articles");
-
-                    b.Navigation("Role")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -19,18 +19,18 @@
                         <span class="text-danger">@Html.ValidationSummary()</span>
                         <div class="form-group">
                             <label for="exampleInputEmail111">Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail111" placeholder="Enter Username" asp-for="Name">
+                            <input type="text" class="form-control" id="exampleInputEmail111" placeholder="Enter Name" asp-for="Name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail12">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail12" placeholder="Enter email" asp-for="Email">
+                            <label for="exampleInputEmail12">Email/UserName</label>
+                            <input type="email" class="form-control" id="exampleInputEmail12" placeholder="Enter Email/UserName" asp-for="Email">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword11">Password</label>
                             <bdi><input type="text" class="form-control" id="exampleInputPassword11" placeholder="Password" asp-for="Password"></bdi>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword12">Password</label>
+                            <label for="exampleInputPassword12">Confirm Password</label>
                             <input type="password" class="form-control" id="exampleInputPassword12" placeholder="Confirm Password" asp-for="ConfirmPassword">
                         </div>
 
@@ -38,8 +38,8 @@
                             <label for="roleInput" class="col-2 col-form-label">Role</label>
 
                             <select class="form-control" id="roleInput" asp-for="Role"> 
-                                <option value="User">User</option> 
-                                <option value="Admin">Admin</option>
+                                <option value="user">User</option> 
+                                <option value="admin">Admin</option>
                             </select>
 
                         </div>

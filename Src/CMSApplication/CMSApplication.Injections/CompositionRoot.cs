@@ -31,9 +31,9 @@ namespace CMSApplication.Injections
 
             builder.RegisterType<UsersService>()
                    .As<IUsersService>()
-                   .EnableInterfaceInterceptors().
-                   InterceptedBy(typeof(UnitOfWorkInterceptor))
-                   .InstancePerLifetimeScope();
+                   .EnableInterfaceInterceptors()
+                   .InterceptedBy(typeof(UnitOfWorkInterceptor))
+                   .InstancePerDependency();
 
             return builder;
         }

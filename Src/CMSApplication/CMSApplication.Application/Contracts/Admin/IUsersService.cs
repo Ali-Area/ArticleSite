@@ -1,4 +1,5 @@
 ﻿using CMSApplication.Application.Dtos.Admin.UserServiceDtos;
+using CMSApplication.Application.Dtos.Admin.UserServiceDtos.GetUserInfoDtos;
 using CMSApplication.Application.Dtos.Admin.UserServiceDtos.GetUserListDtos;
 using CMSApplication.CommonTools.Dtos;
 using System;
@@ -15,5 +16,6 @@ namespace CMSApplication.Application.Contracts.Admin
         Task<ResultDto> DeleteUser(string userId);
         Task<ResultDto> ChangeActivity(string userId);
         ResultDto EditUser(string userId, UserDto data);
+        ResultDto<UserInfoDto> GetUserInfo(string userId);
     }
 }

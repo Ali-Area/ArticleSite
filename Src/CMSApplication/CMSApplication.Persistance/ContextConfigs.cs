@@ -21,9 +21,10 @@ namespace CMSApplication.Persistance
 
         public static void ConfigEntitySeeds(this ModelBuilder builder)
         {
+
             builder.Entity<Role>().HasData(
-                    new Role() { Id = "admin", Name = "Admin", NormalizedName = "ADMIN" },
-                    new Role() { Id = "user", Name = "User", NormalizedName = "USER" }
+                    new Role() { Id = "admin", IsDeleted = false, Name = "Admin", Users = null, NormalizedName = "ADMIN" },
+                    new Role() { Id = "user", IsDeleted = false, Name = "User", Users = null, NormalizedName = "USER" }
                 );
 
 
@@ -32,10 +33,14 @@ namespace CMSApplication.Persistance
 
         public static void ConfigEntityRelations(this ModelBuilder builder)
         {
-            builder.Entity<Role>()
-                .HasOne(r => r.User)
-                .WithOne(u => u.Role)
-                .HasForeignKey<Role>(r => r.UserId);
+            builder.Entity<User>().HasOne(user => user.Role)
+                .WithMany(role => role.Users)
+                .HasForeignKey(user => user.RoleId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<User>().HasIndex(user => user.Email).IsUnique();
+
+ 
         }
 
     }

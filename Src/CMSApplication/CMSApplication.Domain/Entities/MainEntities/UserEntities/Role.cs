@@ -11,14 +11,11 @@ namespace CMSApplication.Domain.Entities.MainEntities.UserEntities
 {
     public class Role : IdentityRole
     {
-        public string Name { get; set; }
         public bool IsDeleted { get; set; }
 
         #region relations 
 
-        public virtual User User { get; set; }
-        [ForeignKey("UserId")]
-        public string? UserId { get; set; }
+        public virtual ICollection<User>? Users { get; set; }
 
 
         #endregion

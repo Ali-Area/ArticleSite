@@ -10,6 +10,9 @@ namespace CMSApplication.Application.Dtos.Admin.UserServiceDtos.GetUserListDtos
     {
         public int RowsCount { get; set; }
         public List<UserDto> Users { get; set; }
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+        public string SearchKey { get; set; }
 
     }
 }

@@ -23,7 +23,7 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
             this._userService = usersServicxe;
         }
 
-        public IActionResult Index(string? searchKey, int page = 1, int pageSize = 10)
+        public IActionResult Index(string? searchKey, int pageSize = 5, int page = 1)
         {
 
             var model = new UsersListViewModel()
@@ -72,12 +72,21 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
             return View(model);
         }
 
-
-        public async Task<IActionResult> UserProfile()
+        public async Task<IActionResult> UserProfile(string userId)
         {
+            var result = _userService.GetUserInfo(userId);
+            if(result.IsSuccess == true)
+            {
+                var model = new UserProfileViewModel()
+                {
+                    UserInfo = result.Data
+                };
+
+                return View(model);
+
+            }
             return View();
         }
-
 
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string userId)

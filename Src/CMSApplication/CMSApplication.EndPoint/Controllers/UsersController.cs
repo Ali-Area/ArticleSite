@@ -161,6 +161,11 @@ namespace CMSApplication.EndPoint.Controllers
         {
             var user = await _userManager.FindByEmailAsync(email);
 
+            if(user == null)
+            {
+                return Microsoft.AspNetCore.Identity.SignInResult.Failed;
+            }
+
             var signInResult = await _signInManager.PasswordSignInAsync(user, password, isPersistance, false);
 
             return signInResult;

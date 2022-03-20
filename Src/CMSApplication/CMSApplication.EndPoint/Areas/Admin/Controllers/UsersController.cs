@@ -2,6 +2,7 @@
 using CMSApplication.Application.Dtos.Admin.UserServiceDtos.GetUserListDtos;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using CMSApplication.EndPoint.Areas.Admin.Models.ViewModels.UsersViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -9,6 +10,7 @@ using System.Security.Claims;
 namespace CMSApplication.EndPoint.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
 
@@ -43,7 +45,7 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
         {
             var model = new AddUserViewModel()
             {
-                
+
             };
 
             return View(model);
@@ -53,10 +55,10 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
         public async Task<IActionResult> AddUser(AddUserViewModel model)
         {
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var createUserResult = await CreateUser(model);
-                if(createUserResult.Succeeded)
+                if (createUserResult.Succeeded)
                 {
                     await AddClaimsAndRole(model);
                     return RedirectToAction("Index", "Users");
@@ -75,7 +77,7 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
         public async Task<IActionResult> UserProfile(string userId)
         {
             var result = _userService.GetUserInfo(userId);
-            if(result.IsSuccess == true)
+            if (result.IsSuccess == true)
             {
                 var model = new UserProfileViewModel()
                 {
@@ -89,10 +91,30 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteUser(string userId)
+        public IActionResult DeleteUser(string userId)
         {
-            var actionResult = await _userService.DeleteUser(userId);
+            var actionResult = _userService.DeleteUser(userId);
             return Json(actionResult);
+        }
+
+        [HttpPost]
+        public IActionResult ChangeUserActivity(string userId)
+        {
+            var actionResult = _userService.ChangeActivity(userId);
+
+            return Json(actionResult);
+        }
+
+        [HttpPost]
+        public IActionResult EditUser(EditUserViewModel editUserViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var actionResult = _userService.EditUser(editUserViewModel.UserId, editUserViewModel.UserName);
+                return Json(actionResult);
+
+            }
+            return RedirectToAction("Index", "Users");
         }
 
 
@@ -110,7 +132,7 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
 
         public async Task<IdentityResult> CreateUser(AddUserViewModel model)
         {
-            if(await CheckUserNotExist(model.Email))
+            if (await CheckUserNotExist(model.Email))
             {
 
                 var role = await _roleManager.FindByNameAsync(model.Role);
@@ -132,7 +154,7 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
 
             }
 
-            return IdentityResult.Failed(new IdentityError() { Code = "1", Description = "a User with the Entered Email is Exists in the DataBase."});
+            return IdentityResult.Failed(new IdentityError() { Code = "1", Description = "a User with the Entered Email is Exists in the DataBase." });
         }
 
         public async Task AddClaimsAndRole(AddUserViewModel model)

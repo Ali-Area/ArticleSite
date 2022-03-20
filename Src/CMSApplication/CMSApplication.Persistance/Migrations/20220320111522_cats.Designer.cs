@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMSApplication.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220317145911_first")]
-    partial class first
+    [Migration("20220320111522_cats")]
+    partial class cats
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,10 @@ namespace CMSApplication.Persistance.Migrations
                     b.Property<string>("Body")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CategoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CommentsCount")
                         .HasColumnType("int");
@@ -70,9 +74,11 @@ namespace CMSApplication.Persistance.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("UserId");
 
-                    b.ToTable("Article");
+                    b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Comment", b =>
@@ -112,6 +118,37 @@ namespace CMSApplication.Persistance.Migrations
                     b.ToTable("Comment");
                 });
 
+            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentCategoryId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.Role", b =>
                 {
                     b.Property<string>("Id")
@@ -125,7 +162,6 @@ namespace CMSApplication.Persistance.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -141,6 +177,24 @@ namespace CMSApplication.Persistance.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "admin",
+                            ConcurrencyStamp = "6423ad76-06ab-43a8-9c90-69f1ed51b42c",
+                            IsDeleted = false,
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "user",
+                            ConcurrencyStamp = "7eeeb2c8-c8ea-41ee-b4d8-18e80115ba87",
+                            IsDeleted = false,
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", b =>
@@ -154,6 +208,12 @@ namespace CMSApplication.Persistance.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -195,6 +255,9 @@ namespace CMSApplication.Persistance.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfileImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RoleId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -204,6 +267,9 @@ namespace CMSApplication.Persistance.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -336,11 +402,19 @@ namespace CMSApplication.Persistance.Migrations
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Article", b =>
                 {
+                    b.HasOne("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", "Category")
+                        .WithMany("Articles")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", "User")
                         .WithMany("Articles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("User");
                 });
@@ -360,6 +434,15 @@ namespace CMSApplication.Persistance.Migrations
                     b.Navigation("Article");
 
                     b.Navigation("ParentCommant");
+                });
+
+            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", b =>
+                {
+                    b.HasOne("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", "ParentCategory")
+                        .WithMany("Childs")
+                        .HasForeignKey("ParentCategoryId");
+
+                    b.Navigation("ParentCategory");
                 });
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", b =>
@@ -432,6 +515,13 @@ namespace CMSApplication.Persistance.Migrations
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Comment", b =>
                 {
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", b =>
+                {
+                    b.Navigation("Articles");
+
+                    b.Navigation("Childs");
                 });
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.Role", b =>

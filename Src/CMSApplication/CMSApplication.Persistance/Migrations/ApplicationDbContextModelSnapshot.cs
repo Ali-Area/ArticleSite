@@ -31,6 +31,10 @@ namespace CMSApplication.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CategoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("CommentsCount")
                         .HasColumnType("int");
 
@@ -68,9 +72,11 @@ namespace CMSApplication.Persistance.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("UserId");
 
-                    b.ToTable("Article");
+                    b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Comment", b =>
@@ -110,6 +116,37 @@ namespace CMSApplication.Persistance.Migrations
                     b.ToTable("Comment");
                 });
 
+            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentCategoryId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.Role", b =>
                 {
                     b.Property<string>("Id")
@@ -143,7 +180,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "e5dec6d8-8a8f-44eb-acea-45783f81199e",
+                            ConcurrencyStamp = "6423ad76-06ab-43a8-9c90-69f1ed51b42c",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -151,7 +188,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "d7b79eb5-521f-4036-90e4-3b3439b3257e",
+                            ConcurrencyStamp = "7eeeb2c8-c8ea-41ee-b4d8-18e80115ba87",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -363,11 +400,19 @@ namespace CMSApplication.Persistance.Migrations
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Article", b =>
                 {
+                    b.HasOne("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", "Category")
+                        .WithMany("Articles")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", "User")
                         .WithMany("Articles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("User");
                 });
@@ -387,6 +432,15 @@ namespace CMSApplication.Persistance.Migrations
                     b.Navigation("Article");
 
                     b.Navigation("ParentCommant");
+                });
+
+            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", b =>
+                {
+                    b.HasOne("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", "ParentCategory")
+                        .WithMany("Childs")
+                        .HasForeignKey("ParentCategoryId");
+
+                    b.Navigation("ParentCategory");
                 });
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", b =>
@@ -459,6 +513,13 @@ namespace CMSApplication.Persistance.Migrations
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Comment", b =>
                 {
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", b =>
+                {
+                    b.Navigation("Articles");
+
+                    b.Navigation("Childs");
                 });
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.UserEntities.Role", b =>

@@ -13,9 +13,9 @@ namespace CMSApplication.Application.Contracts.Admin
     public interface IUsersService
     {
         GetUserListResultDto GetUserList(GetUserListRequestDto request);
-        Task<ResultDto> DeleteUser(string userId);
-        Task<ResultDto> ChangeActivity(string userId);
-        ResultDto EditUser(string userId, UserDto data);
+        ResultDto DeleteUser(string userId);
+        ResultDto ChangeActivity(string userId);
+        ResultDto EditUser(string userId, string Name);
         ResultDto<UserInfoDto> GetUserInfo(string userId);
     }
 }

@@ -35,6 +35,13 @@ namespace CMSApplication.Injections
                    .InterceptedBy(typeof(UnitOfWorkInterceptor))
                    .InstancePerDependency();
 
+            builder.RegisterType<CategoryService>()
+                   .As<ICategoryService>()
+                   .EnableInterfaceInterceptors()
+                   .InterceptedBy(typeof(UnitOfWorkInterceptor))
+                   .InstancePerDependency();
+
+
             return builder;
         }
     }

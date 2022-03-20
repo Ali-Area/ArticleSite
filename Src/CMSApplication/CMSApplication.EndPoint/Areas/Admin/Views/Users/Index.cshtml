@@ -84,8 +84,8 @@
                                                             </button>
                                                             <div class="dropdown-menu animated slideInUp" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 36px, 0px);">
                                                                 <a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id"><i class="ti-eye"></i></a>
-                                                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-check"></i></a>
-                                                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                                <a class="dropdown-item" href="javascript:void(0)" onclick="ChangeUserActivity('@user.Id', '@user.Name', '@user.IsActive.ToString().ToLower()')"><i class="ti-check"></i></a>
+                                                                <a class="dropdown-item" href="javascript:void(0)" onclick="ShowModal('@user.Id', '@user.Name', '@user.Email')"><i class="ti-pencil-alt"></i></a>
                                                                 <a class="dropdown-item" href="javascript:void(0)" onclick="RemoveUser('@user.Id', '@user.Name')"><i class="ti-trash"></i></a>
                                                             </div>
                                                         </div>
@@ -185,6 +185,144 @@
     }
 
 
+    function ChangeUserActivity(userId, userName, isActive)
+    {
+
+        var activity = isActive == "true" ? "غیرفعال" : "فعال";
+
+        Swal.fire({
+            title: 'آیا مطمعن هستید؟',
+            text: `کاربر ${userName} ${activity} خواهد شد.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله',
+            cancelButtonText: 'خیر!'
+        }).then((result) => {
+            if(result.value)
+            {
+
+                var postData =  {
+                    "userId" : userId
+                }
+
+                $.ajax({
+                    contentType : "application/x-www-form-urlencoded",
+                    type : "POST",
+                    data : postData,
+                    dataType : "json",
+                    url : "Users/ChangeUserActivity",
+                    success : function(data) {
+                        if(data.isSuccess == true)
+                        {
+                            Swal.fire(
+                                "موفق!",
+                                data.message,
+                                "success"
+                            ).then(() => {
+                                window.location.reload();
+                            });
+                        }
+                        else
+                        {
+                            swal.fire(
+                                "ناموفق!",
+                                value.message,
+                                "error"
+                            );
+                        }
+                    },
+                    error : function(xhr, status, error) {
+                        alert(xhr.responseText);
+                    }
+
+
+                });
+
+            }
+        });
+    }
+
+
+    function ShowModal(userId, userName, userEmail)
+    {
+        $("#modalName").val(userName);
+        $("#modalLatestName").val(userName);
+
+        $("#modalEmail").val(userEmail);
+        $("#modalId").val(userId);
+
+
+        $("#editUserModal").modal("show");
+    }
+
+
+    function SendData()
+    {
+        var userId = $("#modalId").val();
+        var userName = $("#modalName").val();
+        var userLatestName = $("#modalLatestName").val();
+
+        Swal.fire({
+            title: 'آیا مطمعن هستید؟',
+            text: `نام کاربر از ${userLatestName} به ${userName} تغییر خواهد کرد.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله',
+            cancelButtonText: 'خیر!'
+        }).then((result) => {
+            if(result.value) 
+            {
+                var postData = {
+                    "userId" : userId,
+                    "userName" : userName
+                }
+
+                $.ajax({
+                    contentType : "application/x-www-form-urlencoded",
+                    data : postData,
+                    dataType : "json",
+                    type : "POST",
+                    url : "Users/EditUser",
+                    success : function (data) 
+                    {
+                        if(data.isSuccess == true) 
+                        {
+                            $("#editUserModal").modal("toggle");
+                            Swal.fire(
+                                "موفق!",
+                                data.message,
+                                "success"
+                            ).then(() => {
+                                window.location.reload();
+                            });
+                        }
+                        else 
+                        {
+                            swal.fire(
+                                "ناموفق!",
+                                value.message,
+                                "error"
+                            );
+                        }
+                    },
+                    error : function (xhr, status, error) 
+                    {
+                        alert(xhr.responseText);
+                    }
+                });
+
+
+            }
+
+        });
+
+
+    }
+
     function SubmitSize()
     {
         $("#pageSizeSelect").on("change", function () {
@@ -192,10 +330,51 @@
         });
     }
 
-    $("pageSizeSelect").val(@Model.Data.PageSize);
+
 
 
 </script>
 
+
+}
+
+
+@section Modal {
+
+
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit User Info</h5>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-area="Admin" asp-controller="Users" asp-action="EditUser">
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Name : </label>
+                        <input type="hidden" class="form-control" id="modalLatestName">
+                        <input type="text" class="form-control" id="modalName">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Email : </label>
+                        <input disabled type="text" class="form-control" id="modalEmail">
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="modalId">
+                    </div>
+
+                    <div class="modal-footer">
+                        <a class="btn btn-primary text-white" onclick="SendData()">Edit Info</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 }

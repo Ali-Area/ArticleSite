@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CMSApplication.CommonTools\CMSApplication.CommonTools.csproj" />
+    <ProjectReference Include="..\CMSApplication.Domain\CMSApplication.Domain.csproj" />
     <ProjectReference Include="..\CMSApplication.Persistance\CMSApplication.Persistance.csproj" />
   </ItemGroup>
 

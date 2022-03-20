@@ -62,11 +62,9 @@ namespace CMSApplication.Application.Services.Admin
             };
         }
 
-        public async Task<ResultDto> ChangeActivity(string userId)
+        public ResultDto ChangeActivity(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null) return new ResultDto() { IsSuccess = false, Message = "The User not Found." };
-
+            var user = _context.Users.Find(userId);
             user.IsActive = !user.IsActive;
 
             string userActivity = user.IsActive == true ? "Activated" : "Disabled";
@@ -77,7 +75,7 @@ namespace CMSApplication.Application.Services.Admin
             };
         }
 
-        public async Task<ResultDto> DeleteUser(string userId)
+        public ResultDto DeleteUser(string userId)
         {
             var user = _context.Users.Find(userId);
             if (user == null) return new ResultDto() { IsSuccess = false, Message = "user not found." }; 
@@ -120,9 +118,30 @@ namespace CMSApplication.Application.Services.Admin
             };
         }
 
-        public ResultDto EditUser(string userId, UserDto data)
+        public ResultDto EditUser(string userId, string Name)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Find(userId);
+
+            if(user == null)
+            {
+                return new ResultDto()
+                {
+                    IsSuccess = false,
+                    Message = "User not Found."
+                };
+            }
+
+            var oldName = user.Name;
+
+            user.Name = Name;
+            user.UpdateDate = DateTime.Now;
+            
+
+            return new ResultDto()
+            {
+                IsSuccess = true,
+                Message = $"user's name changed from : {oldName} to {Name}."
+            };
         }
 
         public ResultDto<UserInfoDto> GetUserInfo(string userId)

@@ -1,4 +1,5 @@
 ﻿using CMSApplication.Domain.Entities.CommonEntities;
+using CMSApplication.Domain.Entities.MainEntities.CategoryEntities;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace CMSApplication.Domain.Entities.MainEntities.ArticleEntities
 
         public virtual ICollection<Comment> Comments { get; set; }
         
+        public virtual Category Category { get; set; }
+        public string CategoryId { get; set; }
 
         #endregion
 

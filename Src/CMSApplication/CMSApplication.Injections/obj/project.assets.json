@@ -2449,6 +2449,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "CMSApplication.CommonTools": "1.0.0",
+          "CMSApplication.Domain": "1.0.0",
           "CMSApplication.Persistance": "1.0.0"
         },
         "compile": {

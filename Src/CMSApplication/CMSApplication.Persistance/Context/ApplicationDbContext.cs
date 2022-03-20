@@ -1,4 +1,5 @@
 ﻿using CMSApplication.Domain.Entities.MainEntities.ArticleEntities;
+using CMSApplication.Domain.Entities.MainEntities.CategoryEntities;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -31,6 +32,21 @@ namespace CMSApplication.Persistance.Context
         }
 
          
+
+
+
+
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+
+
+
+
+
+
+
+
 
 
 

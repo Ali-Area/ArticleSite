@@ -1,4 +1,5 @@
 ﻿@using CMSApplication.EndPoint.Areas.Admin.Models.ViewModels.UsersViewModels
+@using CMSApplication.EndPoint.Areas.Admin.ViewComponents
 
 @model UsersListViewModel
 
@@ -6,9 +7,7 @@
     ViewData["Title"] = "Users List";
 }
 
-@{
 
-}
 
 <div class="row">
     <div class="col-12">
@@ -105,7 +104,7 @@
 
                         @if (Model.Data.RowsCount > Model.Data.PageSize)
                         {
-                            @await Component.InvokeAsync("PaginationComponent", new { page = Model.Data.Page, pageSize = Model.Data.PageSize, totalCount = Model.Data.RowsCount, searchKey = Model.Data.SearchKey} )
+                            @await Component.InvokeAsync("PaginationComponent", new PaginationComponentRequestDto() { Page = Model.Data.Page, PageSize = Model.Data.PageSize, SearchKey = Model.Data.SearchKey, TotalCount = Model.Data.RowsCount, Controller = "Users", Action = "Index" })
 
                         }
 

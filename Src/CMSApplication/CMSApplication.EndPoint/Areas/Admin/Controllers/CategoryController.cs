@@ -1,7 +1,10 @@
 ﻿using CMSApplication.Application.Contracts.Admin;
+using CMSApplication.Application.Dtos.Admin.CategoryServiceDtos.GetCategoriesDto;
 using CMSApplication.EndPoint.Areas.Admin.Models.ViewModels.CategoriesViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace CMSApplication.EndPoint.Areas.Admin.Controllers
 {
@@ -18,13 +21,32 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(string? parentCatId, string? searchKey, int page = 1, int pageSize = 10)
         {
-            return View();
+            var getListResult = _categoryService.GetCategoryList(new GetCategoryListRequestDto()
+            {
+                Page = page,
+                PageSize = pageSize,
+                ParentId = parentCatId,
+                SearchKey = searchKey
+            });
+
+            var model = new CategoryListViewModel()
+            {
+                CategoryList = getListResult.CategoryList,
+                Page = getListResult.Page,
+                PageSize = getListResult.PageSize,
+                RowsCount = getListResult.RowsCount,
+                SearchKey = getListResult.SearchKey
+            };
+            return View(model);
         }
 
         public IActionResult AddCategory()
         {
+
+            ViewBag.Categories = new SelectList(_categoryService.GetParentCategories().Data, "Id", "Name");
+
             var model = new AddCategoryViewModel()
             {
                   
@@ -44,10 +66,20 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
                 {
                     return RedirectToAction("Index", "Category");
                 }
+                ViewBag.Categories = new SelectList(_categoryService.GetParentCategories().Data, "Id", "Name");
                 return View(model);
             }
+            ViewBag.Categories = new SelectList(_categoryService.GetParentCategories().Data, "Id", "Name");
             return View(model);
         }
+
+        public IActionResult DeleteCategory(string categoryId)
+        {
+            var result = _categoryService.DeleteCategory(categoryId);
+            return Json(result);
+        }
+
+       
 
     }
 }

@@ -10,7 +10,9 @@ namespace CMSApplication.Application.Contracts.Admin
 {
     public interface ICategoryService
     {
-        GetCategoryListResultDto GetCategoryList(string? parentId);
+        GetCategoryListResultDto GetCategoryList(GetCategoryListRequestDto request);
         ResultDto Add(string name, string? parentId);
+        ResultDto<List<ParentCategoryDto>> GetParentCategories();
+        ResultDto DeleteCategory(string categoryId);
     }
 }

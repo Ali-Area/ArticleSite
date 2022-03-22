@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CMSApplication.Persistance.Migrations
 {
-    public partial class addingcatgoryproperty : Migration
+    public partial class filters : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -257,12 +257,12 @@ namespace CMSApplication.Persistance.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "IsDeleted", "Name", "NormalizedName" },
-                values: new object[] { "admin", "a431110d-98d6-40a3-9bfe-36adc7937566", false, "Admin", "ADMIN" });
+                values: new object[] { "admin", "ad90631a-ff68-4312-a2fa-f88f8353babb", false, "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "IsDeleted", "Name", "NormalizedName" },
-                values: new object[] { "user", "f8c75640-5b3d-4dff-8027-671b12925f11", false, "User", "USER" });
+                values: new object[] { "user", "9c33dbdc-3a1b-47a7-88fa-69ea15219b47", false, "User", "USER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_CategoryId",

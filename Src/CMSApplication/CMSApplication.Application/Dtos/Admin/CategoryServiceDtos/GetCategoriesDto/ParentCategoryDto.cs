@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace CMSApplication.Application.Dtos.Admin.CategoryServiceDtos.GetCategoriesDto
 {
-    public class CategoryDto
+    public class ParentCategoryDto
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public bool HasChild { get; set; } = false;
-        public int SubCount { get; set; } = 0;
-        public ParentCategoryDto? Parent { get; set; }
-        public int PostCount { get; set; } = 0;
     }
 }

@@ -5,17 +5,20 @@ namespace CMSApplication.EndPoint.Areas.Admin.ViewComponents
 {
     public class PaginationComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(int page, int pageSize, int totalCount, string searchKey)
+        public IViewComponentResult Invoke(PaginationComponentRequestDto request)
         {
             var model = new PaginationViewModel()
             {
-                Page = page,
-                PageSize = pageSize,
-                TotalCount = totalCount,
-                SearchKey = searchKey
+                Page = request.Page,
+                PageSize = request.PageSize,
+                TotalCount = request.TotalCount,
+                SearchKey = request.SearchKey,
+                Controller = request.Controller,
+                Action = request.Action
             };
 
             return View("PaginationComponent", model: model);
         }
     }
+
 }

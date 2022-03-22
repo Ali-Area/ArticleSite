@@ -1,4 +1,5 @@
 ﻿using CMSApplication.Domain.Entities.MainEntities.ArticleEntities;
+using CMSApplication.Domain.Entities.MainEntities.CategoryEntities;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ namespace CMSApplication.Persistance
             builder.Entity<Article>().HasQueryFilter(a => !a.IsDeleted);
             builder.Entity<Comment>().HasQueryFilter(c => !c.IsDeleted);
             builder.Entity<User>().HasQueryFilter(u => !u.IsDeleted);
+            builder.Entity<Category>().HasQueryFilter(c => !c.IsDeleted);
         }
 
         public static void ConfigEntitySeeds(this ModelBuilder builder)
@@ -39,6 +41,8 @@ namespace CMSApplication.Persistance
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<User>().HasIndex(user => user.Email).IsUnique();
+
+
 
  
         }

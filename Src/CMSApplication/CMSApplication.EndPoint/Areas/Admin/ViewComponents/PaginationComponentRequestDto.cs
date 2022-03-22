@@ -1,6 +1,6 @@
-﻿namespace CMSApplication.EndPoint.Areas.Admin.Models.ViewModels.ComponentsViewModels
+﻿namespace CMSApplication.EndPoint.Areas.Admin.ViewComponents
 {
-    public class PaginationViewModel
+    public class PaginationComponentRequestDto
     {
         public int Page { get; set; }
         public int PageSize { get; set; }
@@ -8,6 +8,6 @@
         public string SearchKey { get; set; }
         public string Controller { get; set; }
         public string Action { get; set; }
-
     }
+
 }

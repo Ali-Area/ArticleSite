@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace CMSApplication.Application.Dtos.Admin.CategoryServiceDtos.GetCategoriesDto
 {
-    public class GetCategoryListResultDto
+    public class GetCategoryListRequestDto
     {
-        public List<CategoryDto> CategoryList { get; set; }
+        public string? ParentId { get; set; }
+        public string? SearchKey { get; set; }
         public int Page { get; set; }
         public int PageSize { get; set; }
-        public int RowsCount { get; set; } = 0;
-        public string? SearchKey { get; set; }
-        
+
     }
 }

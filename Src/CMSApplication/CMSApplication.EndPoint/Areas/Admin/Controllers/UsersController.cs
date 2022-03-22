@@ -10,7 +10,6 @@ using System.Security.Claims;
 namespace CMSApplication.EndPoint.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
 

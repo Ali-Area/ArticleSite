@@ -180,7 +180,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "6423ad76-06ab-43a8-9c90-69f1ed51b42c",
+                            ConcurrencyStamp = "ad90631a-ff68-4312-a2fa-f88f8353babb",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -188,7 +188,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "7eeeb2c8-c8ea-41ee-b4d8-18e80115ba87",
+                            ConcurrencyStamp = "9c33dbdc-3a1b-47a7-88fa-69ea15219b47",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"

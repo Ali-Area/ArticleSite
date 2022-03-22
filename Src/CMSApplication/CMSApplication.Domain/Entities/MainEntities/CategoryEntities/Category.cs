@@ -15,10 +15,9 @@ namespace CMSApplication.Domain.Entities.MainEntities.CategoryEntities
 
         #region Relations 
 
-        public virtual ICollection<Article>? Articles { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
 
-
-        public virtual ICollection<Category>? Childs { get; set; }
+        public virtual ICollection<Category> Childs { get; set; }
         
         public virtual Category ParentCategory { get; set; }
         [ForeignKey("ParentCategoryId")]

@@ -7,14 +7,17 @@
 }
 
 @{
-    int pageCount = Model.TotalCount / Model.PageSize;
+    double pageCount = Model.TotalCount / Model.PageSize;
+    pageCount = Math.Floor(pageCount);
+    var from = Model.Page == 1 ? "1" : $"{(Model.Page - 1) * Model.PageSize}";
+    var to = Model.Page * Model.PageSize;
 }
 
 
 <div class="row">
     <div class="col-sm-12 col-md-5">
         <div class="dataTables_info" id="row_select_info" role="status" aria-live="polite">
-            Showing 1 to 10 of @Model.TotalCount entries
+            Showing @from to @to of @Model.TotalCount entries
         </div>
     </div>
     <div class="col-sm-12 col-md-7">
@@ -25,20 +28,21 @@
                     var after = Model.Page + 1;
                 }
 
-                <li class="paginate_button page-item previous disabled" id="row_select_previous"><a asp-area="Admin" asp-controller="Users" asp-action="Index" asp-route-page="@before" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" aria-controls="row_select" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                
+                <li class="paginate_button page-item previous disabled" id="row_select_previous"><a asp-controller="@Model.Controller" asp-action="@Model.Action" asp-route-page="@before" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" class="page-link">Previous</a></li>
 
-                @for(int i = 1; i <= pageCount; i += 1)
+                @for (int i = 1; i <= pageCount; i += 1)
                 {
-                    
-                    <li class="paginate_button page-item "><a asp-area="Admin" asp-controller="Users" asp-action="Index" asp-route-page="@i" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" aria-controls="row_select" data-dt-idx="3" tabindex="0" class="page-link">@i</a></li>
-                    
+                    <li class="paginate_button page-item "><a asp-controller="@Model.Controller" asp-action="@Model.Action" asp-route-page="@i" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" aria-controls="row_select" data-dt-idx="3" tabindex="0" class="page-link">@i</a></li>
+
                 }
-                    
-                
-                
-                
-                <li class="paginate_button page-item next" id="row_select_next"><a asp-area="Admin" asp-controller="Users" asp-action="Index" asp-route-page="@after" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" aria-controls="row_select" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+
+                @if (Model.Page != pageCount)
+                {
+                    <li class="paginate_button page-item next" id="row_select_next"><a asp-controller="@Model.Controller" asp-action="@Model.Action" asp-route-page="@after" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" aria-controls="row_select" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+
+                }
+
+
             </ul>
         </div>
     </div>

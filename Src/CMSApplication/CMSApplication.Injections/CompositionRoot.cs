@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using CMSApplication.Application.Contracts.Admin;
+using CMSApplication.Application.Contracts.Site;
 using CMSApplication.Application.Services.Admin;
+using CMSApplication.Application.Services.Site;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using CMSApplication.Persistance;
 using CMSApplication.Persistance.Context;
@@ -41,6 +43,11 @@ namespace CMSApplication.Injections
                    .InterceptedBy(typeof(UnitOfWorkInterceptor))
                    .InstancePerDependency();
 
+            builder.RegisterType<FrontUserService>()
+                    .As<IFrontUserService>()
+                    .EnableInterfaceInterceptors()
+                    .InterceptedBy(typeof(UnitOfWorkInterceptor))
+                    .InstancePerDependency();
 
             return builder;
         }

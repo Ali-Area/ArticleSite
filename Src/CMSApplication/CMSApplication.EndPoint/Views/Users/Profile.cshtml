@@ -1,0 +1,107 @@
+﻿@using CMSApplication.EndPoint.Models.SiteViewModels.UserViewModels
+
+@model FrontUserProfileViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+
+
+<div class="heading-page header-text">
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="text-content">
+                        <h4>@Model.ProfileInfo.Role</h4>
+                        <h2>@Model.ProfileInfo.Name</h2>
+                        <h4>@Model.ProfileInfo.UserName</h4>
+                        <p class="text-white">Posts : @Model.ProfileInfo.PostCount</p>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+
+
+                    <a class="btn btn-primary">Add Article</a>
+                    <a class="btn btn-secondary">Edit Profile</a>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+</div>
+
+
+
+<section class="blog-posts">
+    <div class="container">
+        <div class="row" style="display: flex; justify-content: center;">
+            <div class="col-lg-8">
+                <div class="all-blog-posts">
+                    <div class="row">
+
+
+
+                        <!-- Posts List -->
+                        @if (Model.ProfileInfo.PostCount > 0)
+                        {
+                            foreach (var article in Model.Articles)
+                            {
+                                <div class="col-lg-12">
+                                    <div class="blog-post">
+                                        <div class="blog-thumb">
+                                            <img src="@article.MainImage" alt="No Image">
+                                        </div>
+                                        <div class="down-content">
+                                            <span>@article.Category</span>
+                                            <a href="post-details.html"><h4>@article.Title</h4></a>
+                                            <ul class="post-info">
+                                                <li><a href="#">@Model.ProfileInfo.Role</a></li>
+                                                <li><a>@article.Created</a></li>
+                                                <li><a href="#">@article.CommentsCount Comments</a></li>
+                                            </ul>
+                                            <p>@article.Summary</p>
+                                            <div class="post-options">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-tags"></i></li>
+                                                            <li><a href="#">Beauty</a>,</li>
+                                                            <li><a href="#">Nature</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <ul class="post-share">
+                                                            <li><i class="fa fa-share-alt"></i></li>
+                                                            <li><a href="#">Facebook</a>,</li>
+                                                            <li><a href="#"> Twitter</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+
+
+                        <!-- Pagination -->
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

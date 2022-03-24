@@ -1,5 +1,9 @@
-﻿using CMSApplication.Domain.Entities.MainEntities.UserEntities;
+﻿using CMSApplication.Application.Contracts.Site;
+using CMSApplication.Application.Dtos.Site.UserServiceDtos.GetProfileDetailsDto;
+using CMSApplication.Domain.Entities.MainEntities.UserEntities;
+using CMSApplication.EndPoint.Areas.Admin.Models.ViewModels.UsersViewModels;
 using CMSApplication.EndPoint.Models.SiteViewModels.RegisterViewModels;
+using CMSApplication.EndPoint.Models.SiteViewModels.UserViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -12,12 +16,14 @@ namespace CMSApplication.EndPoint.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IFrontUserService _userService;
 
-        public UsersController(UserManager<User> userManager, RoleManager<Role> roleManager, SignInManager<User> signInManager)
+        public UsersController(UserManager<User> userManager, RoleManager<Role> roleManager, SignInManager<User> signInManager, IFrontUserService userService)
         {
             this._userManager = userManager;
             this._roleManager = roleManager;
             this._signInManager = signInManager;
+            this._userService = userService;
         }
 
         [HttpGet]
@@ -34,7 +40,7 @@ namespace CMSApplication.EndPoint.Controllers
             {
                 var signInResult = await SignInTheUser(null, model.UserName, model.Password, model.IsPersistance);
 
-                if(signInResult.Succeeded)
+                if (signInResult.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
                 }
@@ -58,18 +64,18 @@ namespace CMSApplication.EndPoint.Controllers
         public async Task<IActionResult> SignUp(SignUpViewModel model)
         {
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
 
                 var result = await CreateUser(model);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     await AddClaimAndRole(model.Name, model.Email);
 
                     var signInResult = await SignInTheUser(model.Name, model.Email, model.Password);
-                    
-                    if(signInResult.Succeeded)
+
+                    if (signInResult.Succeeded)
                     {
                         return RedirectToAction("Index", "Home");
                     }
@@ -84,7 +90,6 @@ namespace CMSApplication.EndPoint.Controllers
             return View(model);
         }
 
-
         public async Task<IActionResult> SignOut()
         {
             await _signInManager.SignOutAsync();
@@ -97,6 +102,36 @@ namespace CMSApplication.EndPoint.Controllers
         }
 
 
+        public IActionResult Profile(string? searchKey, int page = 1)
+        {
+
+            var userid = User.Claims.FirstOrDefault(claim => claim.Type.Equals("UserId", StringComparison.OrdinalIgnoreCase))?.Value.ToString();
+            var profileInfo = _userService.GetProfileDetails(new GetProfileDetailsRequestDto()
+            {
+                Page = page,
+                PageSize = 2,
+                SearchKey = searchKey,
+                UserId = userid
+            });
+
+            if (profileInfo.IsSuccess == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = new FrontUserProfileViewModel()
+            {
+                ProfileInfo = profileInfo.Data,
+                Articles = profileInfo.Data.Articles
+            };
+
+
+            return View(model);
+
+
+
+
+        }
 
 
 
@@ -114,7 +149,7 @@ namespace CMSApplication.EndPoint.Controllers
         public async Task<IdentityResult> CreateUser(SignUpViewModel model)
         {
 
-            if(await CheckUserNotExist(model.Email))
+            if (await CheckUserNotExist(model.Email))
             {
 
                 var role = await _roleManager.FindByIdAsync("user");
@@ -135,7 +170,7 @@ namespace CMSApplication.EndPoint.Controllers
 
             }
 
-            return IdentityResult.Failed(new IdentityError () { Code = "1", Description = "some error ocured."});
+            return IdentityResult.Failed(new IdentityError() { Code = "1", Description = "some error ocured." });
         }
 
         public async Task AddClaimAndRole(string name, string email)
@@ -144,14 +179,16 @@ namespace CMSApplication.EndPoint.Controllers
             var role = await _roleManager.FindByNameAsync("User");
 
             var userNameClaim = new Claim("UserName", email);
+            var userIdClaim = new Claim("UserId", user.Id);
             var emailClaim = new Claim("Email", email);
             var nameClaim = new Claim("Name", name);
             var roleClaim = new Claim("Role", user.Role.Name.ToString());
-            
+
             await _userManager.AddClaimAsync(user, emailClaim);
             await _userManager.AddClaimAsync(user, userNameClaim);
             await _userManager.AddClaimAsync(user, nameClaim);
             await _userManager.AddClaimAsync(user, roleClaim);
+            await _userManager.AddClaimAsync(user, userIdClaim);
 
             await _userManager.AddToRoleAsync(user, role.Name);
 
@@ -161,7 +198,7 @@ namespace CMSApplication.EndPoint.Controllers
         {
             var user = await _userManager.FindByEmailAsync(email);
 
-            if(user == null)
+            if (user == null)
             {
                 return Microsoft.AspNetCore.Identity.SignInResult.Failed;
             }
@@ -174,7 +211,7 @@ namespace CMSApplication.EndPoint.Controllers
 
         public async Task<bool> CheckUserNotExist(string email)
         {
-            if(await _userManager.FindByEmailAsync(email) == null)
+            if (await _userManager.FindByEmailAsync(email) == null)
             {
                 return true;
             }

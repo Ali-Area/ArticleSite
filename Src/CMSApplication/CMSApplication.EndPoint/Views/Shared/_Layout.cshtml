@@ -1,44 +1,53 @@
 ﻿
+
+
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="~/SiteTemplate/css/bootstrap.css">
-      <link rel="stylesheet" href="~/SiteTemplate/css/bootstrap-icons.css">
-      <link rel="stylesheet" href="~/SiteTemplate/css/owl.carousel.css">
-      <link rel="stylesheet" href="~/SiteTemplate/css/owl.theme.default.css">
-      <link rel="stylesheet" href="~/SiteTemplate/style.css">
-      <title>قالب وبلاگ سئو 90</title>
-   </head>
-   <body>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    
+    <!-- Styles -->
+    <partial name="Partials/_Styles" />
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
 
 
-       <!-- main header -->
-       <partial name="Partials/_MainHeader" />
+
+    <!-- Header -->
+    <partial name="Partials/_Header" />
+
+    <!-- Page Content -->
+
+    <!-- SlideShow -->
+    <partial name="Partials/_SlideShow" />
 
 
-
-       <!-- main content -->
-       @RenderBody()
+    @RenderBody()
 
 
-
-      <!-- footer -->  
-      <partial name="Partials/_Footer" />
-
-      <!-- scroll top tool -->
-      <div class="scroll_top">
-         <span class="btn btn-info text-center text-light">
-         <i class="bi bi-arrow-up"></i>
-         </span>
-      </div>
-
-   </body>
-
-   <!-- scripts -->
-   <partial name = "Partials/_Scripts" />
+    <!-- Footer -->
+    <partial name="Partials/_Footer" />
 
 
+    <!-- Scripts -->
+    <partial name="Partials/_Scripts" />
+
+</body>
 </html>

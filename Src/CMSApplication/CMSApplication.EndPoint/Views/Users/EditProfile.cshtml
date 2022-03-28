@@ -1,0 +1,88 @@
+﻿@using CMSApplication.EndPoint.Models.SiteViewModels.UserViewModels
+
+
+@model FrontEditProfileViewModel
+
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+
+
+
+
+
+<div class="container">
+
+    <div class="row heading-page">
+        <div class="col-12">
+
+
+
+            <div class="card">
+                <div class="card-body">
+
+                    <form method="post" asp-controller="Users" asp-action="EditProfile" enctype="multipart/form-data"> 
+
+
+
+                        <span class="text-danger">@Html.ValidationSummary()</span>
+
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="Name" placeholder="Your Name Here ..." asp-for="Name">
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input accept="image/*" type="file" class="custom-file-input" id="ProfileImage" asp-for="ProfileImage">
+                                        <label class="custom-file-label" for="inputGroupFile01">Profile Image</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="Biography" placeholder="Biography ..." asp-for="Biography">
+                                    </textarea>
+                            </div>
+                        </div>
+
+                        <hr>
+
+
+                        <div class="form-group m-b-0 text-right">
+                            <button type="submit" class="btn btn-info waves-effect waves-light">Edit</button>
+                            <a asp-controller="Users" asp-action="Profile" class="btn btn-dark waves-effect waves-light">Cancel</a>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+</div>

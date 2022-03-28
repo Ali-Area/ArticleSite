@@ -1,5 +1,7 @@
 ﻿using CMSApplication.Application.Contracts.Site;
+using CMSApplication.Application.Dtos.Site.UserServiceDtos.EditProfileDto;
 using CMSApplication.Application.Dtos.Site.UserServiceDtos.GetProfileDetailsDto;
+using CMSApplication.CommonTools;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using CMSApplication.EndPoint.Areas.Admin.Models.ViewModels.UsersViewModels;
 using CMSApplication.EndPoint.Models.SiteViewModels.RegisterViewModels;
@@ -133,7 +135,38 @@ namespace CMSApplication.EndPoint.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult EditProfile()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult EditProfile (FrontEditProfileViewModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var userId = User.Claims.FirstOrDefault(claim => claim.Type.Equals("UserId", StringComparison.OrdinalIgnoreCase))?.Value.ToString();
+
+            if(userId == null) { return Json(Tools.ReturnResult(false, "User Not Found.")); }
+
+
+            var editResult = _userService.EditProfile(new EditProfileRequestDto()
+            {
+                UserId = userId,
+                Biography = model.Biography,
+                Name = model.Name,
+                ProfileImage = model.ProfileImage
+            });
+
+            if(editResult.IsSuccess == false) { return Json(Tools.ReturnResult(false, editResult.Message)); }
+
+            return RedirectToAction("Profile", "Users");
+
+        }
 
 
 

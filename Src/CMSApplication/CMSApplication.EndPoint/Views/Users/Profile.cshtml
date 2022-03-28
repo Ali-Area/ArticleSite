@@ -1,4 +1,5 @@
 ﻿@using CMSApplication.EndPoint.Models.SiteViewModels.UserViewModels
+@using CMSApplication.EndPoint.ViewComponents
 
 @model FrontUserProfileViewModel
 
@@ -15,6 +16,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="text-content">
+                        <img src="~/@Model.ProfileInfo.ProfileImage" alt="user" class="rounded-circle" width="300" height="300">
                         <h4>@Model.ProfileInfo.Role</h4>
                         <h2>@Model.ProfileInfo.Name</h2>
                         <h4>@Model.ProfileInfo.UserName</h4>
@@ -27,7 +29,7 @@
 
 
                     <a asp-area="" asp-controller="Article" asp-action="AddArticle" class="btn btn-primary">Add Article</a>
-                    <a class="btn btn-secondary">Edit Profile</a>
+                    <a asp-area="" asp-controller="Users" asp-action="EditProfile" class="btn btn-secondary">Edit Profile</a>
 
                 </div>
             </div>
@@ -63,7 +65,7 @@
                                             <span>@article.Category</span>
                                             <a href="post-details.html"><h4>@article.Title</h4></a>
                                             <ul class="post-info">
-                                                <li><a href="#">@Model.ProfileInfo.Role</a></li>
+                                                <li><a href="#">@Model.ProfileInfo.Name</a></li>
                                                 <li><a>@article.Created</a></li>
                                                 <li><a href="#">@article.CommentsCount Comments</a></li>
                                             </ul>
@@ -72,16 +74,9 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <ul class="post-tags">
-                                                            <li><i class="fa fa-tags"></i></li>
-                                                            <li><a href="#">Beauty</a>,</li>
-                                                            <li><a href="#">Nature</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <ul class="post-share">
-                                                            <li><i class="fa fa-share-alt"></i></li>
-                                                            <li><a href="#">Facebook</a>,</li>
-                                                            <li><a href="#"> Twitter</a></li>
+                                                            <li><i class="fa fa-gear"></i></li>
+                                                            <li><a href="#">Delete</a> |</li>
+                                                            <li><a href="#">Edit</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -94,10 +89,17 @@
 
 
 
-                        <!-- Pagination -->
 
 
                     </div>
+
+                    <!-- Pagination -->
+                    @if (Model.ProfileInfo.PaginationInfo.TotalCount > Model.ProfileInfo.PaginationInfo.PageSize)
+                    {
+                        @await Component.InvokeAsync("FrontPaginationComponent", new FrontPaginationComponentRequestDto() { Page = Model.ProfileInfo.PaginationInfo.Page, PageSize = Model.ProfileInfo.PaginationInfo.PageSize, SearchKey = Model.ProfileInfo.PaginationInfo.SearchKey, TotalCount = Model.ProfileInfo.PaginationInfo.TotalCount, Controller = "Users", Action = "Profile" })
+
+                    }
+
                 </div>
             </div>
 

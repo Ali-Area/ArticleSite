@@ -20,6 +20,7 @@ namespace CMSApplication.Domain.Entities.MainEntities.UserEntities
         public DateTime? DeleteDate { get; set; }
         public DateTime CreateDate { get; set; } = DateTime.Now;
         public string? ProfileImage { get; set; }
+        public string? Biography { get; set; }
 
 
         #region relations

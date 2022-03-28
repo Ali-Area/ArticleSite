@@ -182,7 +182,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "f2f61acb-870a-4acf-a57d-9cfb5a776619",
+                            ConcurrencyStamp = "2b43dda3-55e0-46b9-8f91-770d5cfcb9ca",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -190,7 +190,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "3862f617-59b5-4858-9b63-2a4e9c826e79",
+                            ConcurrencyStamp = "d3fa0b93-e57c-4cd0-a3b7-3b90eb920b40",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -204,6 +204,9 @@ namespace CMSApplication.Persistance.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Biography")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()

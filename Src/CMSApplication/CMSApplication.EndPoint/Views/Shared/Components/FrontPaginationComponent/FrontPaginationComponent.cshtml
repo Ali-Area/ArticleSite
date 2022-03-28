@@ -1,0 +1,53 @@
+﻿@using CMSApplication.EndPoint.Models.SiteViewModels.PaginationViewModel
+
+@model FrontPaginationViewModel
+
+@{
+    Layout = null;
+}
+
+@{
+    double pageCount = Model.TotalCount / Model.PageSize;
+    pageCount = Math.Floor(pageCount);
+    var from = Model.Page == 1 ? "1" : $"{(Model.Page - 1) * Model.PageSize}";
+    var to = Model.Page * Model.PageSize;
+}
+
+
+
+
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-7">
+        <div class="dataTables_paginate paging_simple_numbers" id="row_select_paginate">
+            <ul class="pagination">
+                @{
+                    var before = Model.Page - 1;
+                    var after = Model.Page + 1;
+                }
+
+                @if (Model.Page > 1)
+                {
+
+                    <li class="paginate_button page-item" id="row_select_next"><a asp-controller="@Model.Controller" asp-action="@Model.Action" asp-route-page="@before" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" aria-controls="row_select" data-dt-idx="7" tabindex="0" class="page-link">Prevrous</a></li>
+
+                }
+
+                @for (int i = 1; i <= pageCount; i += 1)
+                {
+                    <li class="paginate_button page-item "><a asp-controller="@Model.Controller" asp-action="@Model.Action" asp-route-page="@i" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" aria-controls="row_select" data-dt-idx="3" tabindex="0" class="page-link">@i</a></li>
+
+                }
+
+                @if (Model.Page != pageCount)
+                {
+                    <li class="paginate_button page-item" id="row_select_next"><a asp-controller="@Model.Controller" asp-action="@Model.Action" asp-route-page="@after" asp-route-pageSize="@Model.PageSize" asp-route-searchKey="@Model.SearchKey" aria-controls="row_select" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+
+                }
+
+
+            </ul>
+        </div>
+    </div>
+</div>

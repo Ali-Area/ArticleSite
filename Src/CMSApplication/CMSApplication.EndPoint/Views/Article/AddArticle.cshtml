@@ -29,14 +29,14 @@
 
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="Title" placeholder="Article Title Here ..." asp-for="Title">
+                                <input type="text" class="form-control" id="Title" placeholder="Article Title Here ..." asp-for="ArticleInof.Title">
                             </div>
                         </div>
 
 
 
                         <div class="form-group">
-                            <textarea id="MainContent" asp-for="Body">
+                            <textarea id="MainContent" asp-for="ArticleInof.Body">
                             </textarea>
                         </div>
 
@@ -49,7 +49,7 @@
                                         <span class="input-group-text">Upload</span>
                                     </div>
                                     <div class="custom-file">
-                                        <input accept="image/*" type="file" class="custom-file-input" id="mainImage" asp-for="MainImage">
+                                        <input accept="image/*" type="file" class="custom-file-input" id="mainImage" asp-for="ArticleInof.MainImage">
                                         <label class="custom-file-label" for="inputGroupFile01">Article Main Image</label>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <textarea class="form-control" id="Summary" placeholder="Article Summary Here ..." asp-for="Summary">
+                                <textarea class="form-control" id="Summary" placeholder="Article Summary Here ..." asp-for="ArticleInof.Summary">
                                     </textarea>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <select class="form-control" id="categorySelect" asp-items="@ViewBag.categories" asp-for="Category">
+                                <select class="form-control" id="categorySelect" asp-items="@ViewBag.categories" asp-for="ArticleInof.Category">
                                 </select>
                             </div>
                         </div>

@@ -16,6 +16,16 @@ namespace CMSApplication.Application.Dtos.Site.UserServiceDtos.GetProfileDetails
         public int PostCount { get; set; } = 0;
         public string ProfileImage { get; set; }
         public List<ArticleDto> Articles { get; set; }
+        public PaginationInfo PaginationInfo { get; set; }
+    }
+
+
+    public class PaginationInfo{
+        public int TotalCount { get; set; }
+        public int PageSize { get; set; }
+        public int Page { get; set; }
+        public string SearchKey { get; set; }
 
     }
+
 }

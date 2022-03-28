@@ -1,4 +1,5 @@
-﻿using CMSApplication.Application.Dtos.Site.UserServiceDtos.GetProfileDetailsDto;
+﻿using CMSApplication.Application.Dtos.Site.UserServiceDtos.EditProfileDto;
+using CMSApplication.Application.Dtos.Site.UserServiceDtos.GetProfileDetailsDto;
 using CMSApplication.CommonTools.Dtos;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,6 @@ namespace CMSApplication.Application.Contracts.Site
     public interface IFrontUserService
     {
         ResultDto<UserProfileDetailDto> GetProfileDetails (GetProfileDetailsRequestDto reqest);
+        ResultDto EditProfile(EditProfileRequestDto request);
     }
 }

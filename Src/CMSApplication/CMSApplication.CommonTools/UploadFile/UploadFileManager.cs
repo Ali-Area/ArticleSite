@@ -14,9 +14,9 @@ namespace CMSApplication.CommonTools.UploadFile
     {
 
 
-        public static ResultDto<UploadImageResultDto> UploadImage(IFormFile image, IHostingEnvironment env)
+        public static ResultDto<UploadImageResultDto> UploadImage(IFormFile image, IHostingEnvironment env, string branch)
         {
-            string imagesFolder = @"Images\ArticleImages\";
+            string imagesFolder = @$"Images\{branch}\";
             var imageBasePath = Path.Combine(env.WebRootPath, imagesFolder);
 
             if(!Directory.Exists(imageBasePath))

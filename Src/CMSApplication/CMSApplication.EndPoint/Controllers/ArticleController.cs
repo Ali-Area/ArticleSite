@@ -65,11 +65,11 @@ namespace CMSApplication.EndPoint.Controllers
             var addResult = _articleService.AddArticle(new AddArticleDto()
             {
                 AuthorId = userId,
-                CategoryId = model.Category,
-                MainContent = model.Body,
-                MainImage = model.MainImage,
-                Summary = model.Summary,
-                Title = model.Title
+                CategoryId = model.ArticleInof.Category,
+                MainContent = model.ArticleInof.Body,
+                MainImage = model.ArticleInof.MainImage,
+                Summary = model.ArticleInof.Summary,
+                Title = model.ArticleInof.Title
             });
 
             if (addResult.IsSuccess == true)

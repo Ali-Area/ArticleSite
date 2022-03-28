@@ -1,0 +1,158 @@
+﻿@using CMSApplication.EndPoint.Models.SiteViewModels.ArticleViewModels
+
+
+@model AddArticleViewModel
+
+
+@{
+    ViewData["Title"] = "Add Article";
+}
+
+
+
+
+
+
+<div class="container">
+
+    <div class="row heading-page">
+        <div class="col-12">
+
+
+
+            <div class="card">
+                <div class="card-body">
+
+                    <form method="post" asp-controller="Article" asp-action="AddArticle" enctype="multipart/form-data" id="articleForm"> 
+
+                        <span class="text-danger">@Html.ValidationSummary()</span>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="Title" placeholder="Article Title Here ..." asp-for="Title">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <textarea id="MainContent" asp-for="Body">
+                            </textarea>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input accept="image/*" type="file" class="custom-file-input" id="mainImage" asp-for="MainImage">
+                                        <label class="custom-file-label" for="inputGroupFile01">Article Main Image</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="Summary" placeholder="Article Summary Here ..." asp-for="Summary">
+                                    </textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <select class="form-control" id="categorySelect" asp-items="@ViewBag.categories" asp-for="Category">
+                                </select>
+                            </div>
+                        </div>
+
+                        <hr>
+
+
+                        <div class="form-group m-b-0 text-right">
+                            <button type="submit" class="btn btn-info waves-effect waves-light">Save</button>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-dark waves-effect waves-light">Cancel</a>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+
+<script>
+
+    var myEditor;
+
+
+    ClassicEditor
+        .create( document.querySelector( '#MainContent' ), {
+            ui : "fa",
+            content : "fa"
+        } )
+        .then( editor => {
+            myEditor = editor;
+        } )
+        .catch( err => {
+            console.error( err.stack );
+        } );
+
+
+
+    function CreateArticle()
+    {
+        $("#MainContent").html(myEditor.getData());
+
+        var postData = {
+            'model' : {
+                'body' : $("#MainContent").val()
+            }
+        }
+
+        $.ajax({
+            contentType : "multipart/form-data",
+            dataType : "json",
+            type : "POST",
+            url : "AddArticle",
+            data : $("#articleForm").serialize(),
+            success : function (data){
+                if(data.isSuccess == true)
+                {
+                    alert("ali");
+                }
+                else
+                {
+                    alert("samaneh");
+                }
+            }
+        });
+
+    }
+
+
+
+
+</script>
+
+}

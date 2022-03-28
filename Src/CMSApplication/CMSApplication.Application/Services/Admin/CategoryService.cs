@@ -23,7 +23,7 @@ namespace CMSApplication.Application.Services.Admin
             _context = context;
         }
 
-        public ResultDto Add(string name, string? parentId)
+        public ResultDto AddCategory(string name, string? parentId)
         {
             var category = new Category()
             {

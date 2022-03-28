@@ -60,7 +60,7 @@ namespace CMSApplication.EndPoint.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
-                var result =  _categoryService.Add(model.CategoryName, model.CategoryParent);
+                var result =  _categoryService.AddCategory(model.CategoryName, model.CategoryParent);
 
                 if(result.IsSuccess == true)
                 {

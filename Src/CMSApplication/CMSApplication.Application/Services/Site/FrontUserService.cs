@@ -40,6 +40,7 @@ namespace CMSApplication.Application.Services.Site
             var articles = _context.Articles
                                .Include(art => art.Author)
                                .Include(art => art.Comments)
+                               .Include(art => art.Category)
                                .Where(art => art.AuthorId == user.Id)
                                .AsQueryable();
 

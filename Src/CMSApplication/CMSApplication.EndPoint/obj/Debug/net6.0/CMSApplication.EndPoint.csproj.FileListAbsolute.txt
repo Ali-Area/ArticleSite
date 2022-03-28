@@ -281,3 +281,6 @@ F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSA
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.CommonTools.dll
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.Application.pdb
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSApplication.CommonTools.pdb
+F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Microsoft.Extensions.Hosting.dll

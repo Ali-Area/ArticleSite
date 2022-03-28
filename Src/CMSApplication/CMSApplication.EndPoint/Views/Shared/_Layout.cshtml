@@ -35,8 +35,7 @@
 
     <!-- Page Content -->
 
-    <!-- SlideShow -->
-    <partial name="Partials/_SlideShow" />
+
 
 
     @RenderBody()
@@ -50,4 +49,7 @@
     <partial name="Partials/_Scripts" />
 
 </body>
+
+@await RenderSectionAsync("Scripts", false)
+
 </html>

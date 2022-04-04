@@ -112,7 +112,7 @@ namespace CMSApplication.Application.Services.Site
 
             user.Name = request.Name;
             user.Biography = request.Biography;
-            user.ProfileImage = UploadResult.Data.ImageAddress;
+            user.ProfileImage = UploadResult.Data.Url;
 
             var updateNameClaimResult = UpdateNameClaim(user, request.Name, _context);
 

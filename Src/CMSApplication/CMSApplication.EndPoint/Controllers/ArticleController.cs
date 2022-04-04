@@ -1,5 +1,6 @@
 ﻿using CMSApplication.Application.Contracts.Site;
 using CMSApplication.Application.Dtos.Site.AddArticleDtos;
+using CMSApplication.CommonTools.UploadFile;
 using CMSApplication.EndPoint.Models.SiteViewModels.ArticleViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,11 +12,13 @@ namespace CMSApplication.EndPoint.Controllers
 
         private readonly IFrontCategoryService _categoryService;
         private readonly IFrontArticleService _articleService;
+        private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _env;
 
-        public ArticleController(IFrontCategoryService categoryService, IFrontArticleService articleService)
+        public ArticleController(IFrontCategoryService categoryService, IFrontArticleService articleService, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             this._categoryService = categoryService;
             this._articleService = articleService;
+            this._env = env;
         }
 
 
@@ -80,6 +83,38 @@ namespace CMSApplication.EndPoint.Controllers
             ViewBag.categories = new SelectList(categories, "Id", "Name");
 
             return View(model);
+        }
+
+
+
+
+
+        // --- other mehtods --- //
+
+        [HttpPost]
+        public IActionResult UploadCkEditorImage()
+        {
+
+            var files = Request.Form.Files;
+
+            if(files.Count() <= 0)
+            {
+                return null;
+            }
+
+            var formImage = files[0];
+
+
+            var uploadResult = UploadFileManager.UploadImage(formImage, _env, "ArticleImages\\InPostImages");
+
+
+            var result = new
+            {
+                Uploaded = true,
+                Url = "/" + uploadResult.Data.Url
+            };
+
+            return Json(result);
         }
 
     }

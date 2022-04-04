@@ -8,6 +8,6 @@ namespace CMSApplication.CommonTools.UploadFile.Dto
 {
     public class UploadImageResultDto
     {
-        public string ImageAddress { get; set; }
+        public string Url { get; set; }
     }
 }

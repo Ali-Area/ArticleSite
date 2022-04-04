@@ -37,7 +37,7 @@ namespace CMSApplication.Application.Services.Site
             if (category == null) return Tools.ReturnResult(false, "Category not Found.");
 
 
-            var uploadImageResult = UploadFileManager.UploadImage(request.MainImage, _env, "ArticleImages");
+            var uploadImageResult =  UploadFileManager.UploadImage(request.MainImage, _env, "ArticleImages");
 
             if (uploadImageResult.IsSuccess == false) return Tools.ReturnResult(false, "Image Not Uploaded.");
 
@@ -52,7 +52,7 @@ namespace CMSApplication.Application.Services.Site
                 CategoryId = category.Id,
                 IsSpecial = false,
                 Summary = request.Summary,
-                MainImage = uploadImageResult.Data.ImageAddress,
+                MainImage = uploadImageResult.Data.Url,
                 CreateDate = DateTime.Now,
                 IsDeleted = false,
                 CommentsCount = 0,

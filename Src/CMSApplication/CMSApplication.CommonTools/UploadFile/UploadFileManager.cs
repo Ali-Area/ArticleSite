@@ -28,7 +28,7 @@ namespace CMSApplication.CommonTools.UploadFile
             {
                 return Tools.ReturnResult(false, "There is Not image Selected.", new UploadImageResultDto()
                 {
-                    ImageAddress = ""
+                    Url = ""
                 });
             }
 
@@ -37,12 +37,13 @@ namespace CMSApplication.CommonTools.UploadFile
 
             using (FileStream stream = new(finalImagePath, FileMode.Create))
             {
-                image.CopyTo(stream);
+                image.CopyToAsync(stream);
+
             }
 
             return Tools.ReturnResult(true, "", new UploadImageResultDto()
             {
-                ImageAddress = imagesFolder + fileName
+                Url = imagesFolder + fileName
             });
 
         }

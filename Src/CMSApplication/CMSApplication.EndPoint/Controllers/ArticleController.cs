@@ -43,7 +43,7 @@ namespace CMSApplication.EndPoint.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddArticle(AddArticleViewModel model)
+        public async Task<IActionResult> AddArticle(AddArticleViewModel model)
         {
             var userId = User.Claims?.FirstOrDefault(claim => claim.Type.Equals("UserId"))?.Value.ToString();
 
@@ -65,7 +65,7 @@ namespace CMSApplication.EndPoint.Controllers
                 return View(model);
             }
 
-            var addResult = _articleService.AddArticle(new AddArticleDto()
+            var addResult = await _articleService.AddArticle(new AddArticleDto()
             {
                 AuthorId = userId,
                 CategoryId = model.ArticleInof.Category,
@@ -92,12 +92,12 @@ namespace CMSApplication.EndPoint.Controllers
         // --- other mehtods --- //
 
         [HttpPost]
-        public IActionResult UploadCkEditorImage()
+        public async Task<IActionResult> UploadCkEditorImage()
         {
 
             var files = Request.Form.Files;
 
-            if(files.Count() <= 0)
+            if (files.Count() <= 0)
             {
                 return null;
             }
@@ -105,7 +105,7 @@ namespace CMSApplication.EndPoint.Controllers
             var formImage = files[0];
 
 
-            var uploadResult = UploadFileManager.UploadImage(formImage, _env, "ArticleImages\\InPostImages");
+            var uploadResult = await UploadFileManager.UploadImage(formImage, _env, "ArticleImages\\InPostImages");
 
 
             var result = new

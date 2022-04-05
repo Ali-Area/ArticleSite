@@ -14,7 +14,7 @@ namespace CMSApplication.CommonTools.UploadFile
     {
 
 
-        public static ResultDto<UploadImageResultDto> UploadImage(IFormFile image, IHostingEnvironment env, string branch)
+        public static async Task<ResultDto<UploadImageResultDto>> UploadImage(IFormFile image, IHostingEnvironment env, string branch)
         {
             string imagesFolder = @$"Images\{branch}\";
             var imageBasePath = Path.Combine(env.WebRootPath, imagesFolder);
@@ -37,8 +37,8 @@ namespace CMSApplication.CommonTools.UploadFile
 
             using (FileStream stream = new(finalImagePath, FileMode.Create))
             {
-                image.CopyToAsync(stream);
-
+                await image.CopyToAsync(stream);
+                stream.Flush();
             }
 
             return Tools.ReturnResult(true, "", new UploadImageResultDto()

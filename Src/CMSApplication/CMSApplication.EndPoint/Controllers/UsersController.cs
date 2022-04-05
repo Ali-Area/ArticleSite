@@ -142,7 +142,7 @@ namespace CMSApplication.EndPoint.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditProfile (FrontEditProfileViewModel model)
+        public async Task<IActionResult> EditProfile (FrontEditProfileViewModel model)
         {
             if(!ModelState.IsValid)
             {
@@ -154,7 +154,7 @@ namespace CMSApplication.EndPoint.Controllers
             if(userId == null) { return Json(Tools.ReturnResult(false, "User Not Found.")); }
 
 
-            var editResult = _userService.EditProfile(new EditProfileRequestDto()
+            var editResult = await _userService.EditProfile(new EditProfileRequestDto()
             {
                 UserId = userId,
                 Biography = model.Biography,

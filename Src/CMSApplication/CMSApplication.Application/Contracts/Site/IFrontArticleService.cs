@@ -11,7 +11,7 @@ namespace CMSApplication.Application.Contracts.Site
     public interface IFrontArticleService
     {
 
-        ResultDto AddArticle(AddArticleDto request);
+        Task<ResultDto> AddArticle(AddArticleDto request);
 
 
     }

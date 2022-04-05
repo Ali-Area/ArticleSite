@@ -12,6 +12,6 @@ namespace CMSApplication.Application.Contracts.Site
     public interface IFrontUserService
     {
         ResultDto<UserProfileDetailDto> GetProfileDetails (GetProfileDetailsRequestDto reqest);
-        ResultDto EditProfile(EditProfileRequestDto request);
+        Task<ResultDto> EditProfile(EditProfileRequestDto request);
     }
 }

@@ -99,14 +99,14 @@ namespace CMSApplication.Application.Services.Site
 
         }
 
-        public ResultDto EditProfile(EditProfileRequestDto request)
+        public async Task<ResultDto> EditProfile(EditProfileRequestDto request)
         {
             var user = _context.Users
                                .Find(request.UserId);
 
             if(user == null) { return Tools.ReturnResult(false, "User Not Found."); }
 
-            var UploadResult = UploadFileManager.UploadImage(request.ProfileImage, _env, "ProfileImages");
+            var UploadResult = await UploadFileManager.UploadImage(request.ProfileImage, _env, "ProfileImages");
 
             if(UploadResult.IsSuccess == false) { return Tools.ReturnResult(false, "Profile Image not Uploaded successfuly."); }
 

@@ -7,6 +7,7 @@ using CMSApplication.CommonTools.UploadFile;
 using CMSApplication.Domain.Entities.MainEntities.UserEntities;
 using CMSApplication.Persistance.Context;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -40,7 +41,7 @@ namespace CMSApplication.Application.Services.Site
                                .Where(user => user.Id == request.UserId)
                                .FirstOrDefault();
 
-            if(user == null)
+            if (user == null)
             {
                 return Tools.ReturnResult(false, "User not Found.", new UserProfileDetailDto() { });
             }
@@ -54,7 +55,7 @@ namespace CMSApplication.Application.Services.Site
                                .Where(art => art.AuthorId == user.Id)
                                .AsQueryable();
 
-            if(!string.IsNullOrWhiteSpace(request.SearchKey))
+            if (!string.IsNullOrWhiteSpace(request.SearchKey))
             {
                 request.SearchKey.ToLower();
                 articles = articles.Where(art => art.Title.ToLower().Contains(request.SearchKey) || art.Author.Name.ToLower().Contains(request.SearchKey) || art.Summary.ToLower().Contains(request.SearchKey) || art.Category.Name.ToLower().Contains(request.SearchKey));
@@ -85,6 +86,7 @@ namespace CMSApplication.Application.Services.Site
                 Email = user.Email,
                 PostCount = user.Articles.Count(),
                 Role = user.Role.Name,
+                Biography = user.Biography,
                 ProfileImage = user.ProfileImage,
                 Articles = articleList,
                 PaginationInfo = new PaginationInfo()
@@ -104,10 +106,10 @@ namespace CMSApplication.Application.Services.Site
             var user = _context.Users
                                .Find(request.UserId);
 
-            if(user == null) { return Tools.ReturnResult(false, "User Not Found."); }
+            if (user == null) { return Tools.ReturnResult(false, "User Not Found."); }
 
 
-
+            // --- change profile image if user profile image is not null --- //
             if(request.ProfileImage != null)
             {
                 var UploadResult = await UploadFileManager.UploadImage(request.ProfileImage, _env, "ProfileImages");
@@ -116,21 +118,33 @@ namespace CMSApplication.Application.Services.Site
             }
 
 
-
-
-            user.Name = request.Name;
-            user.Biography = request.Biography;
-
-
-            var updateNameClaimResult = UpdateNameClaim(user, request.Name, _context);
-
-            if(updateNameClaimResult == false)
+            // --- change biography if user biography is not null --- //
+            if(request.Biography != null)
             {
-                return Tools.ReturnResult(false, "some erro occured.");
+                user.Biography = request.Biography;
             }
 
+
+
+            // --- change user name if user name is not null --- //
+            if (request.Name != null)
+            {
+                user.Name = request.Name;
+                var updateNameClaimResult = UpdateNameClaim(user, request.Name, _context);
+
+                if (updateNameClaimResult == false)
+                {
+                    return Tools.ReturnResult(false, "some erro occured.");
+                }
+
+            }
+
+
+
+
+
             return Tools.ReturnResult(true, "All thing Edited successfuly.");
- 
+
         }
 
 
@@ -148,12 +162,12 @@ namespace CMSApplication.Application.Services.Site
                                     .Where(claim => claim.UserId == user.Id && claim.ClaimType == "Name")
                                     .FirstOrDefault();
 
-            if(userNameClaims != null)
+            if (userNameClaims != null)
             {
                 context.UserClaims.Remove(userNameClaims);
             }
 
-            
+
             var nameClaim = new IdentityUserClaim<string>()
             {
                 ClaimType = "Name",

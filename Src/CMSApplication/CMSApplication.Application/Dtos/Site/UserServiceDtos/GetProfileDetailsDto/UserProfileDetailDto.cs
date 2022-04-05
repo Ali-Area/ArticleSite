@@ -11,6 +11,7 @@ namespace CMSApplication.Application.Dtos.Site.UserServiceDtos.GetProfileDetails
         public string UserId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string? Biography { get; set; }
         public string UserName { get; set; }
         public string Role { get; set; }
         public int PostCount { get; set; } = 0;

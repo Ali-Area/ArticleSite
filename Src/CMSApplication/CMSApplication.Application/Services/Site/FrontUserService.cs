@@ -106,13 +106,21 @@ namespace CMSApplication.Application.Services.Site
 
             if(user == null) { return Tools.ReturnResult(false, "User Not Found."); }
 
-            var UploadResult = await UploadFileManager.UploadImage(request.ProfileImage, _env, "ProfileImages");
 
-            if(UploadResult.IsSuccess == false) { return Tools.ReturnResult(false, "Profile Image not Uploaded successfuly."); }
+
+            if(request.ProfileImage != null)
+            {
+                var UploadResult = await UploadFileManager.UploadImage(request.ProfileImage, _env, "ProfileImages");
+                if (UploadResult.IsSuccess == false) { return Tools.ReturnResult(false, "Profile Image not Uploaded successfuly."); }
+                user.ProfileImage = UploadResult.Data.Url;
+            }
+
+
+
 
             user.Name = request.Name;
             user.Biography = request.Biography;
-            user.ProfileImage = UploadResult.Data.Url;
+
 
             var updateNameClaimResult = UpdateNameClaim(user, request.Name, _context);
 
@@ -137,7 +145,7 @@ namespace CMSApplication.Application.Services.Site
         {
 
             var userNameClaims = context.UserClaims
-                                    .Where(claim => claim.UserId == user.Id && claim.ClaimType.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                                    .Where(claim => claim.UserId == user.Id && claim.ClaimType == "Name")
                                     .FirstOrDefault();
 
             if(userNameClaims != null)

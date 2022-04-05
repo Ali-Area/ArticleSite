@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LpZnrEZSXW7HrXnASUhzbdsK/g55nBEnBULqqmjmZfU=",
+  "Hash": "XAHAZy7gb5N0RrAWzz0QZr1+SmD14BRYejR/7bIjouI=",
   "Source": "CMSApplication.EndPoint",
   "BasePath": "_content/CMSApplication.EndPoint",
   "Mode": "Default",
@@ -79966,6 +79966,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\Images\\ArticleImages\\637847554086293056silhouette.jpg",
+      "SourceId": "CMSApplication.EndPoint",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\",
+      "BasePath": "_content/CMSApplication.EndPoint",
+      "RelativePath": "Images/ArticleImages/637847554086293056silhouette.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\ArticleImages\\637847554086293056silhouette.jpg"
+    },
+    {
+      "Identity": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\Images\\ArticleImages\\InPostImages\\637847553908178630silhouette.jpg",
+      "SourceId": "CMSApplication.EndPoint",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\",
+      "BasePath": "_content/CMSApplication.EndPoint",
+      "RelativePath": "Images/ArticleImages/InPostImages/637847553908178630silhouette.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\ArticleImages\\InPostImages\\637847553908178630silhouette.jpg"
     },
     {
       "Identity": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\Images\\ProfileImages\\6378410270876682881641510575_3.jpg",

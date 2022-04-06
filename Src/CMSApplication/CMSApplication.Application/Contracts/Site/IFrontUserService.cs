@@ -13,5 +13,6 @@ namespace CMSApplication.Application.Contracts.Site
     {
         ResultDto<UserProfileDetailDto> GetProfileDetails (GetProfileDetailsRequestDto reqest);
         Task<ResultDto> EditProfile(EditProfileRequestDto request);
+        ResultDto<EditProfileDetailDto> GetEditProfileDetails(string userId);
     }
 }

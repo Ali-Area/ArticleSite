@@ -138,18 +138,31 @@ namespace CMSApplication.EndPoint.Controllers
         [HttpGet]
         public IActionResult EditProfile()
         {
+
+
+            var userId = User.Claims.FirstOrDefault(claim => claim.Type.Equals("UserId", StringComparison.OrdinalIgnoreCase))?.Value.ToString();
+            if (userId == null) { return RedirectToAction("Index", "Home"); }
+
+            ViewBag.biography = _userService.GetEditProfileDetails(userId).Data.Bioraphy;
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> EditProfile (FrontEditProfileViewModel model)
         {
-            if(!ModelState.IsValid)
+            // --- get user id --- //
+            var userId = User.Claims.FirstOrDefault(claim => claim.Type.Equals("UserId", StringComparison.OrdinalIgnoreCase))?.Value.ToString();
+
+
+
+            if (!ModelState.IsValid)
             {
+                ViewBag.biography = _userService.GetEditProfileDetails(userId).Data.Bioraphy;
                 return View(model);
             }
 
-            var userId = User.Claims.FirstOrDefault(claim => claim.Type.Equals("UserId", StringComparison.OrdinalIgnoreCase))?.Value.ToString();
+            
 
             if(userId == null) { return Json(Tools.ReturnResult(false, "User Not Found.")); }
 

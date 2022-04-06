@@ -28,6 +28,8 @@ namespace CMSApplication.EndPoint.Controllers
             return View();
         }
 
+        
+        [HttpGet]
         public IActionResult AddArticle()
         {
             var model = new AddArticleViewModel()
@@ -86,6 +88,11 @@ namespace CMSApplication.EndPoint.Controllers
         }
 
 
+        public IActionResult DeleteArticle(string articleId)
+        {
+            var deleteResult = _articleService.DeleteArticle(articleId);
+            return Json(deleteResult);
+        }
 
 
 

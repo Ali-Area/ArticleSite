@@ -66,5 +66,21 @@ namespace CMSApplication.Application.Services.Site
                 IsSuccess = true
             };
         }
+
+        public ResultDto DeleteArticle(string articleId)
+        {
+            var article = _context.Articles.Find(articleId);
+
+            if (article == null) { return Tools.ReturnResult(false, "article with this id not found."); }
+
+            _context.Articles.Remove(article);
+
+            return Tools.ReturnResult(true, "article removed.");
+        }
+
+        public ResultDto EditArticle(EditArticleDto request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

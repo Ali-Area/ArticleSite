@@ -38,7 +38,6 @@ namespace CMSApplication.CommonTools.UploadFile
             using (FileStream stream = new(finalImagePath, FileMode.Create))
             {
                 await image.CopyToAsync(stream);
-                stream.Flush();
             }
 
             return Tools.ReturnResult(true, "", new UploadImageResultDto()

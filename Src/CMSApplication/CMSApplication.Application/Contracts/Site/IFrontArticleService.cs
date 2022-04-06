@@ -12,7 +12,8 @@ namespace CMSApplication.Application.Contracts.Site
     {
 
         Task<ResultDto> AddArticle(AddArticleDto request);
-
+        ResultDto EditArticle(EditArticleDto request);
+        ResultDto DeleteArticle(string articleId);
 
     }
 }

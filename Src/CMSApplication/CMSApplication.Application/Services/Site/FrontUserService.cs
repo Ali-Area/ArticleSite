@@ -110,7 +110,7 @@ namespace CMSApplication.Application.Services.Site
 
 
             // --- change profile image if user profile image is not null --- //
-            if(request.ProfileImage != null)
+            if (request.ProfileImage != null)
             {
                 var UploadResult = await UploadFileManager.UploadImage(request.ProfileImage, _env, "ProfileImages");
                 if (UploadResult.IsSuccess == false) { return Tools.ReturnResult(false, "Profile Image not Uploaded successfuly."); }
@@ -119,66 +119,39 @@ namespace CMSApplication.Application.Services.Site
 
 
             // --- change biography if user biography is not null --- //
-            if(request.Biography != null)
+            if (request.Biography != null)
             {
                 user.Biography = request.Biography;
             }
-
-
-
-            // --- change user name if user name is not null --- //
-            if (request.Name != null)
-            {
-                user.Name = request.Name;
-                var updateNameClaimResult = UpdateNameClaim(user, request.Name, _context);
-
-                if (updateNameClaimResult == false)
-                {
-                    return Tools.ReturnResult(false, "some erro occured.");
-                }
-
-            }
-
-
-
 
 
             return Tools.ReturnResult(true, "All thing Edited successfuly.");
 
         }
 
-
-
-
-
-
-
-        // --- other methods --- //
-
-        public bool UpdateNameClaim(User user, string name, ApplicationDbContext context)
+        public ResultDto<EditProfileDetailDto> GetEditProfileDetails(string userId)
         {
+            var user = _context.Users.Find(userId);
 
-            var userNameClaims = context.UserClaims
-                                    .Where(claim => claim.UserId == user.Id && claim.ClaimType == "Name")
-                                    .FirstOrDefault();
-
-            if (userNameClaims != null)
+            if (user == null)
             {
-                context.UserClaims.Remove(userNameClaims);
+                return Tools.ReturnResult(false, "user not found.", new EditProfileDetailDto()
+                {
+                    Bioraphy = ""
+                });
             }
 
 
-            var nameClaim = new IdentityUserClaim<string>()
+            return Tools.ReturnResult(true, "", new EditProfileDetailDto()
             {
-                ClaimType = "Name",
-                ClaimValue = name,
-                UserId = user.Id
-            };
+                Bioraphy = user.Biography
+            });
 
-            context.UserClaims.Add(nameClaim);
-
-            return true;
         }
+
+
+
+
 
 
     }

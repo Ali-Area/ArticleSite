@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "O2UvnTEDPgYRZnmZXPTj3oH6jZa3adveFY/ygrINfUI=",
+  "Hash": "7yAGR9yfCkvPXUxClKPM7Co08grg2pY100eAvmknx0s=",
   "Source": "CMSApplication.EndPoint",
   "BasePath": "_content/CMSApplication.EndPoint",
   "Mode": "Default",
@@ -80153,6 +80153,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\ArticleImages\\6378485379309403251641510595_15.jpg"
+    },
+    {
+      "Identity": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\Images\\ArticleImages\\6378493038629897151641510595_15.jpg",
+      "SourceId": "CMSApplication.EndPoint",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\",
+      "BasePath": "_content/CMSApplication.EndPoint",
+      "RelativePath": "Images/ArticleImages/6378493038629897151641510595_15.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\ArticleImages\\6378493038629897151641510595_15.jpg"
     },
     {
       "Identity": "F:\\Main Project\\Src\\CMSApplication\\CMSApplication.EndPoint\\wwwroot\\Images\\ArticleImages\\InPostImages\\6378484522099593551641511908_7.jpg",

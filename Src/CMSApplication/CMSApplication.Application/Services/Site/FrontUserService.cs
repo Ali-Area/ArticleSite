@@ -112,7 +112,7 @@ namespace CMSApplication.Application.Services.Site
             // --- change profile image if user profile image is not null --- //
             if (request.ProfileImage != null)
             {
-                var UploadResult = await UploadFileManager.UploadImage(request.ProfileImage, _env, "ProfileImages");
+                var UploadResult = UploadFileManager.UploadImage(request.ProfileImage, _env, "ProfileImages");
                 if (UploadResult.IsSuccess == false) { return Tools.ReturnResult(false, "Profile Image not Uploaded successfuly."); }
                 user.ProfileImage = UploadResult.Data.Url;
             }

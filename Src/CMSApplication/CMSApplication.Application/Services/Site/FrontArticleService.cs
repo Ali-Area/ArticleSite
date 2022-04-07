@@ -27,7 +27,7 @@ namespace CMSApplication.Application.Services.Site
         }
 
 
-        public async Task<ResultDto> AddArticle(AddArticleDto request)
+        public ResultDto AddArticle(AddArticleDto request)
         {
             var user = _context.Users.Find(request.AuthorId);
 
@@ -37,7 +37,7 @@ namespace CMSApplication.Application.Services.Site
             if (category == null) return Tools.ReturnResult(false, "Category not Found.");
 
 
-            var uploadImageResult = await UploadFileManager.UploadImage(request.MainImage, _env, "ArticleImages");
+            var uploadImageResult = UploadFileManager.UploadImage(request.MainImage, _env, "ArticleImages");
 
             if (uploadImageResult.IsSuccess == false) return Tools.ReturnResult(false, "Image Not Uploaded.");
 

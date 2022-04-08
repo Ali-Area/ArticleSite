@@ -111,7 +111,7 @@ namespace CMSApplication.EndPoint.Controllers
             var profileInfo = _userService.GetProfileDetails(new GetProfileDetailsRequestDto()
             {
                 Page = page,
-                PageSize = 2,
+                PageSize = 5,
                 SearchKey = searchKey,
                 UserId = userid
             });

@@ -1,4 +1,4 @@
-﻿using CMSApplication.Application.Dtos.Site.AddArticleDtos;
+﻿using CMSApplication.Application.Dtos.Site.ArticleDtos;
 using CMSApplication.CommonTools.Dtos;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ namespace CMSApplication.Application.Contracts.Site
         ResultDto AddArticle(AddArticleDto request);
         ResultDto EditArticle(EditArticleDto request);
         ResultDto DeleteArticle(string articleId);
+        ResultDto<ShowArticleDetailsDto> ShowArticleDetails(string articleId);
 
     }
 }

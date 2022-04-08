@@ -1,9 +1,10 @@
 ﻿using CMSApplication.Application.Contracts.Site;
-using CMSApplication.Application.Dtos.Site.AddArticleDtos;
+using CMSApplication.Application.Dtos.Site.ArticleDtos;
 using CMSApplication.CommonTools.UploadFile;
 using CMSApplication.EndPoint.Models.SiteViewModels.ArticleViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Net;
 
 namespace CMSApplication.EndPoint.Controllers
 {
@@ -67,6 +68,7 @@ namespace CMSApplication.EndPoint.Controllers
                 return View(model);
             }
 
+   
             var addResult = _articleService.AddArticle(new AddArticleDto()
             {
                 AuthorId = userId,
@@ -93,6 +95,35 @@ namespace CMSApplication.EndPoint.Controllers
             var deleteResult = _articleService.DeleteArticle(articleId);
             return Json(deleteResult);
         }
+
+
+        public IActionResult ShowArticleDetails(string articleId)
+        {
+            var data = _articleService.ShowArticleDetails(articleId);
+
+            if(data.IsSuccess == false)
+            {
+                return RedirectToAction("Users", "Profile");
+            }
+
+            var model = new ShowArticleDetailsViewModel()
+            {
+                Id = data.Data.Id,
+                Title = data.Data.Title,
+                Author = data.Data.Author,
+                Body = data.Data.Body,
+                Category = data.Data.Category,
+                CommentCount = data.Data.CommentCount,
+                CreateDate = data.Data.CreateDate,
+                MainImage = data.Data.MainImage,
+                Visit = data.Data.Visit           
+            };
+
+            return View(model);
+        }
+
+
+
 
 
 

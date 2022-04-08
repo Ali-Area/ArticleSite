@@ -1,11 +1,12 @@
 ﻿using CMSApplication.Application.Contracts.Site;
-using CMSApplication.Application.Dtos.Site.AddArticleDtos;
+using CMSApplication.Application.Dtos.Site.ArticleDtos;
 using CMSApplication.CommonTools;
 using CMSApplication.CommonTools.Dtos;
 using CMSApplication.CommonTools.UploadFile;
 using CMSApplication.Domain.Entities.MainEntities.ArticleEntities;
 using CMSApplication.Persistance.Context;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,41 @@ namespace CMSApplication.Application.Services.Site
         public ResultDto EditArticle(EditArticleDto request)
         {
             throw new NotImplementedException();
+        }
+
+        public ResultDto<ShowArticleDetailsDto> ShowArticleDetails(string articleId)
+        {
+            var article = _context.Articles
+                                  .Include(article => article.Category)
+                                  .Include(article => article.Author)
+                                  .Include(article => article.Comments)
+                                  .Where(article => article.Id == articleId)
+                                  .FirstOrDefault();
+
+            if(article == null)
+            {
+                return Tools.ReturnResult(false, "article not found.", new ShowArticleDetailsDto()
+                {
+
+                });
+            }
+
+            var articleDetails = new ShowArticleDetailsDto()
+            {
+                Id = article.Id,
+                Author = article.Author.Name,
+                Body = article.Body,
+                Category = article.Category.Name,
+                CreateDate = article.CreateDate.ToString(),
+                CommentCount = article.CommentsCount,
+                MainImage = article.MainImage,
+                Title = article.Title,
+                Visit = article.Visite
+            };
+
+
+            return Tools.ReturnResult(true, "", articleDetails);
+
         }
     }
 }

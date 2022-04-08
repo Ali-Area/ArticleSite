@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="down-content">
                                             <span>@article.Category</span>
-                                            <a href="post-details.html"><h4>@article.Title</h4></a>
+                                            <a asp-controller="Article" asp-action="ShowArticleDetails" asp-route-articleId="@article.ArticleId" ><h4>@article.Title</h4></a>
                                             <ul class="post-info">
                                                 <li><a href="#">@Model.ProfileInfo.Name</a></li>
                                                 <li><a>@article.Created</a></li>

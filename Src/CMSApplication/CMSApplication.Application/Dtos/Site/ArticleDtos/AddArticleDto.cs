@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CMSApplication.Application.Dtos.Site.AddArticleDtos
+namespace CMSApplication.Application.Dtos.Site.ArticleDtos
 {
     public class AddArticleDto
     {

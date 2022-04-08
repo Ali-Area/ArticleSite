@@ -284,10 +284,3 @@ F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\CMSA
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Microsoft.Extensions.Configuration.UserSecrets.dll
 F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Microsoft.Extensions.Hosting.dll
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\System.Web.Mvc.dll
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\System.Web.Razor.dll
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\System.Web.Helpers.dll
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\System.Web.WebPages.dll
-F:\Main Project\Src\CMSApplication\CMSApplication.EndPoint\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

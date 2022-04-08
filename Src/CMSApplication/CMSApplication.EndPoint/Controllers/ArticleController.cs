@@ -123,6 +123,13 @@ namespace CMSApplication.EndPoint.Controllers
         }
 
 
+        public IActionResult EditArticle()
+        {
+            return View();
+        } 
+
+
+
 
 
 

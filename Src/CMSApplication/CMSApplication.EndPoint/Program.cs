@@ -23,6 +23,7 @@ ConfigureServices(builder.Services, builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
 Configure(app);
 
 
@@ -79,6 +80,9 @@ void ConfigureContainer(WebApplicationBuilder builder)
 
 void Configure(WebApplication builder)
 {
+
+
+
     if (!app.Environment.IsDevelopment())
     {
         app.UseExceptionHandler("/Home/Error");

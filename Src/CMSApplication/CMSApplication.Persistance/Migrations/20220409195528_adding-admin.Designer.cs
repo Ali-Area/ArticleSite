@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMSApplication.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220324075453_addingArticleProp")]
-    partial class addingArticleProp
+    [Migration("20220409195528_adding-admin")]
+    partial class addingadmin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,10 @@ namespace CMSApplication.Persistance.Migrations
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Article", b =>
                 {
                     b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Body")
@@ -67,19 +71,14 @@ namespace CMSApplication.Persistance.Migrations
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Visite")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Visite")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("AuthorId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Articles");
                 });
@@ -185,7 +184,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "f508efc9-8f8c-4cd2-a43e-ef9b53d9c4c2",
+                            ConcurrencyStamp = "1c4cafbe-57dc-4c27-bed5-397cd207df7c",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -193,7 +192,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "ac913a0c-5530-4b05-b745-c38c9a235194",
+                            ConcurrencyStamp = "09aeb776-6c45-43b6-b8e7-8b99937b2392",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -207,6 +206,9 @@ namespace CMSApplication.Persistance.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Biography")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -295,6 +297,27 @@ namespace CMSApplication.Persistance.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "adminuser",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "065b17e4-9e45-4f8e-aa5b-65262d0939eb",
+                            CreateDate = new DateTime(2022, 4, 10, 0, 25, 27, 865, DateTimeKind.Local).AddTicks(7796),
+                            Email = "admin@admin.com",
+                            EmailConfirmed = false,
+                            IsActive = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            Name = "MainAdmin",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOKgG4mmXYKPezfIMmvahZYxGgicQNyNbx3mto8RqVg3EYqzx5IFwvITe0Whytl7rg==",
+                            PhoneNumberConfirmed = false,
+                            RoleId = "admin",
+                            SecurityStamp = "3ea9efe6-0035-4a95-84a4-a1148c457c5b",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -382,6 +405,13 @@ namespace CMSApplication.Persistance.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "adminuser",
+                            RoleId = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -405,21 +435,21 @@ namespace CMSApplication.Persistance.Migrations
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Article", b =>
                 {
+                    b.HasOne("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", "Author")
+                        .WithMany("Articles")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("CMSApplication.Domain.Entities.MainEntities.CategoryEntities.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CMSApplication.Domain.Entities.MainEntities.UserEntities.User", "User")
-                        .WithMany("Articles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Author");
 
                     b.Navigation("Category");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CMSApplication.Domain.Entities.MainEntities.ArticleEntities.Comment", b =>

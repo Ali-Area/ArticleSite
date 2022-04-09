@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMSApplication.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220324150752_lastone")]
-    partial class lastone
+    [Migration("20220409194446_adding-admin-seed")]
+    partial class addingadminseed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -184,7 +184,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "f2f61acb-870a-4acf-a57d-9cfb5a776619",
+                            ConcurrencyStamp = "90be1920-830d-4946-972a-90378f584fd0",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -192,7 +192,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "3862f617-59b5-4858-9b63-2a4e9c826e79",
+                            ConcurrencyStamp = "b86af95a-f608-493c-8192-d4bad91cabe1",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -206,6 +206,9 @@ namespace CMSApplication.Persistance.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Biography")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -294,6 +297,27 @@ namespace CMSApplication.Persistance.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "adminuser",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ea46d49d-212e-4d14-a6b2-9303f3e781d5",
+                            CreateDate = new DateTime(2022, 4, 10, 0, 14, 45, 768, DateTimeKind.Local).AddTicks(4110),
+                            Email = "admin@admin.com",
+                            EmailConfirmed = false,
+                            IsActive = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            Name = "MainAdmin",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFA8oy7rABbSfvqo4+g7j2QcNhSvDr8oXX++3W50kfBys4Dvrrbaz2tCtTTX5iupYA==",
+                            PhoneNumberConfirmed = false,
+                            RoleId = "admin",
+                            SecurityStamp = "536fca56-2bf6-4eea-8713-1e7e0dd739a2",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -381,6 +405,13 @@ namespace CMSApplication.Persistance.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "adminuser",
+                            RoleId = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

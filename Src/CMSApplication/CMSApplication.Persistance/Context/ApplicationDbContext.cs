@@ -25,8 +25,13 @@ namespace CMSApplication.Persistance.Context
         {
             base.OnModelCreating(builder);
 
+
+            builder.ConfigRoleSeeds();
+            builder.ConfigUserSeeds();
+            builder.UserRolesSeeds();
+                
+
             builder.ConfigEntityFilters();
-            builder.ConfigEntitySeeds();
             builder.ConfigEntityRelations();
 
         }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CMSApplication.Persistance.Migrations
 {
-    public partial class filters : Migration
+    public partial class addingseeds : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -79,6 +79,7 @@ namespace CMSApplication.Persistance.Migrations
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Biography = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -113,10 +114,11 @@ namespace CMSApplication.Persistance.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Body = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Summary = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Visite = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Visite = table.Column<int>(type: "int", nullable: false),
                     MainImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CommentsCount = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsSpecial = table.Column<bool>(type: "bit", nullable: false),
+                    AuthorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CategoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -127,8 +129,8 @@ namespace CMSApplication.Persistance.Migrations
                 {
                     table.PrimaryKey("PK_Articles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Articles_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Articles_AspNetUsers_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -257,22 +259,32 @@ namespace CMSApplication.Persistance.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "IsDeleted", "Name", "NormalizedName" },
-                values: new object[] { "admin", "ad90631a-ff68-4312-a2fa-f88f8353babb", false, "Admin", "ADMIN" });
+                values: new object[] { "admin", "042b632e-c393-426c-90a4-9d00990dec7b", false, "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "IsDeleted", "Name", "NormalizedName" },
-                values: new object[] { "user", "9c33dbdc-3a1b-47a7-88fa-69ea15219b47", false, "User", "USER" });
+                values: new object[] { "user", "7c859025-6ed3-4448-a2fe-9ef9b21f5aa9", false, "User", "USER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Biography", "ConcurrencyStamp", "CreateDate", "DeleteDate", "Email", "EmailConfirmed", "IsActive", "IsDeleted", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileImage", "RoleId", "SecurityStamp", "TwoFactorEnabled", "UpdateDate", "UserName" },
+                values: new object[] { "adminuser", 0, null, "04b9a5d0-70db-4054-9cc6-b3f9654775c7", new DateTime(2022, 4, 9, 19, 45, 20, 405, DateTimeKind.Local).AddTicks(459), null, "admin@admin.com", false, true, false, false, null, "MainAdmin", null, null, null, null, false, null, "admin", "a12aa4a3-274c-47be-b28d-eba1f7ba9f95", false, null, "admin" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "admin", "adminuser" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Articles_AuthorId",
+                table: "Articles",
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_CategoryId",
                 table: "Articles",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Articles_UserId",
-                table: "Articles",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -15,7 +15,7 @@ namespace CMSApplication.Domain.Entities.MainEntities.UserEntities
 
         #region relations 
 
-        public virtual ICollection<User>? Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
 
 
         #endregion

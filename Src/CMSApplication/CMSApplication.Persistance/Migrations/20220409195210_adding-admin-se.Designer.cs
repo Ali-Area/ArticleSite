@@ -4,6 +4,7 @@ using CMSApplication.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMSApplication.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220409195210_adding-admin-se")]
+    partial class addingadminse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,7 +184,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "bf756cf6-bf99-45e1-b4ab-61b4e27a7643",
+                            ConcurrencyStamp = "e65f3438-fbb1-405f-ab5b-9313c0723dc9",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -190,7 +192,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "8a39059b-51f6-47bd-b973-55191ac7e508",
+                            ConcurrencyStamp = "f9a6ce5d-8b46-47ac-a1e9-bc5a96a435a6",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -301,22 +303,20 @@ namespace CMSApplication.Persistance.Migrations
                         {
                             Id = "adminuser",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3fd17d61-8e0e-4fd3-b4c8-39171aeb2dcd",
-                            CreateDate = new DateTime(2022, 4, 10, 0, 55, 17, 878, DateTimeKind.Local).AddTicks(4988),
+                            ConcurrencyStamp = "528c1984-9bf2-442b-93c8-c9ca42b77d00",
+                            CreateDate = new DateTime(2022, 4, 10, 0, 22, 9, 454, DateTimeKind.Local).AddTicks(9295),
                             Email = "admin@admin.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             IsActive = true,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             Name = "MainAdmin",
-                            NormalizedEmail = "ADMIN@ADMIN.COM",
-                            NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHl3p97efbMYt/Q9vkkMNvVZDAlDiUY8BKUKM+45hH/YEO5AjNN3WRWr7EoNqKct/w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOKgG4mmXYKPezfIMmvahZYxGgicQNyNbx3mto8RqVg3EYqzx5IFwvITe0Whytl7rg==",
                             PhoneNumberConfirmed = false,
                             RoleId = "admin",
-                            SecurityStamp = "6bd73ab7-a2c2-441b-a89c-540e0a12f98d",
+                            SecurityStamp = "75c5b14f-f99c-4b56-b24c-a75c8268aab5",
                             TwoFactorEnabled = false,
-                            UserName = "admin@admin.com"
+                            UserName = "admin"
                         });
                 });
 
@@ -368,43 +368,6 @@ namespace CMSApplication.Persistance.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserClaims", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClaimType = "UserName",
-                            ClaimValue = "admin@admin.com",
-                            UserId = "adminuser"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClaimType = "Email",
-                            ClaimValue = "admin@admin.com",
-                            UserId = "adminuser"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClaimType = "UserId",
-                            ClaimValue = "adminuser",
-                            UserId = "adminuser"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClaimType = "Name",
-                            ClaimValue = "MainAdmin",
-                            UserId = "adminuser"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ClaimType = "Role",
-                            ClaimValue = "Admin",
-                            UserId = "adminuser"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>

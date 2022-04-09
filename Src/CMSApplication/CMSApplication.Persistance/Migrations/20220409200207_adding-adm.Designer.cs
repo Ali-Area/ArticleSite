@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMSApplication.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220328173307_UserBio")]
-    partial class UserBio
+    [Migration("20220409200207_adding-adm")]
+    partial class addingadm
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -184,7 +184,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "2b43dda3-55e0-46b9-8f91-770d5cfcb9ca",
+                            ConcurrencyStamp = "18def546-cdbb-44f5-b317-2d3276dcdebe",
                             IsDeleted = false,
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -192,7 +192,7 @@ namespace CMSApplication.Persistance.Migrations
                         new
                         {
                             Id = "user",
-                            ConcurrencyStamp = "d3fa0b93-e57c-4cd0-a3b7-3b90eb920b40",
+                            ConcurrencyStamp = "eee9e999-8253-4e22-a480-e3d7b469c783",
                             IsDeleted = false,
                             Name = "User",
                             NormalizedName = "USER"
@@ -297,6 +297,27 @@ namespace CMSApplication.Persistance.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "adminuser",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8ad1319a-7a1d-41ca-8a63-e90c401b7af6",
+                            CreateDate = new DateTime(2022, 4, 10, 0, 32, 7, 355, DateTimeKind.Local).AddTicks(2897),
+                            Email = "admin@admin.com",
+                            EmailConfirmed = false,
+                            IsActive = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            Name = "MainAdmin",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHsPNaL+ZMa+oTrmQo7vVt8PvdUs2pqRVXRBshPuCRCx92CewHhmDX6lFMgP/XRP0w==",
+                            PhoneNumberConfirmed = false,
+                            RoleId = "admin",
+                            SecurityStamp = "12653aff-bd4c-4b6d-b66c-200f4e70abdd",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -384,6 +405,13 @@ namespace CMSApplication.Persistance.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "adminuser",
+                            RoleId = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

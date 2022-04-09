@@ -1,0 +1,277 @@
+﻿@using CMSApplication.EndPoint.Areas.Admin.Models.ViewModels.ArticleViewModels
+@using CMSApplication.EndPoint.Areas.Admin.ViewComponents
+
+@model ArticleListViewModel
+
+@{
+    ViewData["Title"] = "Articles";
+}
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Article List</h4>
+                <div class="table-responsive">
+                    <div id="row_select_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-10 col-md-10">
+                                <div class="dataTables_length" id="row_select_length">
+                                    <form method="get" asp-area="Admin" asp-controller="Article" asp-action="Index">
+                                        <label>
+                                            Show:
+                                            <select onchange="this.form.submit()" id="pageSizeSelect" name="pageSize" aria-controls="row_select" class="form-control form-control-sm">
+                                                <option>Size</option>
+                                                <option value="2">2</option>
+                                                <option value="10">10</option>
+                                                <option value="30">30</option>
+                                                <option value="50">50</option>
+                                            </select>
+                                        </label>
+
+                                        @*<button id="submitSize" type="submit">show</button>*@
+                                    </form>
+
+                                    <form>
+                                        <label>
+                                            Search:
+                                            <input type="search" name="searchKey" class="form-control form-control-sm" placeholder="" aria-controls="row_select">
+                                        </label>
+                                    </form>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                        <div class="row col-md-12 col-sm-12">
+                            <div class="col-sm-12 col-md-12">
+                                <table id="row_select" class="table table-striped table-bordered display dataTable" style="width: 100%;" role="grid" aria-describedby="row_select_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 1%;">#</th>
+                                            <th class="sorting" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 1%;">Main Image</th>
+                                            <th class="sorting" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 1%;">IsSpecial</th>
+                                            <th class="sorting" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 20%;">Title</th>
+                                            <th class="sorting" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 2%px;">Author</th>
+                                            <th class="sorting" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 1%px;">Category</th>
+                                            <th class="sorting" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 1%px;">Comment Count</th>
+                                            <th class="sorting" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 1%px;">Visit</th>
+                                            <th class="sorting" tabindex="0" aria-controls="row_select" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 1%;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @if (Model.Data.ArticleList.Count() > 0)
+                                        {
+                                            var counter = 1;
+                                            foreach (var article in Model.Data.ArticleList)
+                                            {
+                                                <tr role="row" class="odd">
+                                                    <td>@counter</td>
+                                                    <td>
+
+                                                        <div class="p-2">
+                                                            <img src="~/@article.MainImage" width="150" class="rounded">
+                                                        </div>
+
+                                                    </td>
+                                                    <td>@article.IsSpecial</td>
+                                                    <td>@article.Title</td>
+                                                    <td>@article.Author</td>
+                                                    <td>@article.Category</td>
+                                                    <td>@article.CommentCount</td>
+                                                    <td>@article.Visit</td>
+                                                    <td>
+
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="ti-settings"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu animated slideInUp" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 36px, 0px);">
+                                                                <a class="dropdown-item" asp-area="" asp-controller="Article" asp-action="ShowArticleDetails" asp-route-articleId="@article.Id"><i class="ti-eye"></i></a>
+                                                                <a class="dropdown-item" href="javascript:void(0)" onclick="ChangeSpecial('@article.Id')"><i class="ti-check"></i></a>
+                                                                <a class="dropdown-item" href="javascript:void(0)" onclick="RemoveArticle('@article.Id', '@article.Title')"><i class="ti-trash"></i></a>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                                counter += 1;
+                                            }
+                                        }
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+
+
+                        @if (Model.Data.RowsCount > Model.Data.PageSize)
+                        {
+                            @await Component.InvokeAsync("PaginationComponent", new PaginationComponentRequestDto() { Page = Model.Data.Page, PageSize = Model.Data.PageSize, SearchKey = Model.Data.SearchKey, TotalCount = Model.Data.RowsCount, Controller = "Users", Action = "Index" })
+
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+<script src="~/Sweetalert2/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="~/Sweetalert2/sweetalert2.min.css" />
+
+
+<script>
+
+
+    function RemoveArticle(articleId, articleTitle)
+    {
+
+
+        Swal.fire({
+              title: 'آیا مطمعن هستید؟',
+              text: `مقاله با عنوان ${articleTitle} حذف خواهد شد.`,
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'بله',
+              cancelButtonText: 'خیر!'
+            }).then((result) => {
+                if(result.value)
+                {
+                    var postData = {
+                        "articleId" : articleId
+                    }
+
+
+                    $.ajax({
+                        contentType : "application/x-www-form-urlencoded",
+                        type : "POST",
+                        dataType : "json",
+                        data : postData,
+                        url : "Article/DeleteArticle",
+                        success : function (data)
+                        {
+                            if(data.isSuccess == true)
+                            {
+                                Swal.fire(
+                                    "موفق!",
+                                    data.message,
+                                    "success"
+                                ).then(() => {
+                                    window.location.reload();
+                                });
+                            }
+                            else
+                            {
+                                swal.fire(
+                                    "ناموفق!",
+                                    value.message,
+                                    "error"
+                                );
+                            }
+                        },
+                        error : function (xhr, status, error)
+                        {
+                            alert(xhr.responseText);
+                        }
+                    });
+
+
+                }
+            });
+    }
+
+
+    function ChangeSpecial(articleId, isSpecial)
+    {
+
+        var specialOrNot = isSpecial == "true" ? "معمولی" : "ویژه";
+
+        Swal.fire({
+            title: 'آیا مطمعن هستید؟',
+            text: `این مقاله به ${specialOrNot} تبدیل خواهد شد.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله',
+            cancelButtonText: 'خیر!'
+        }).then((result) => {
+            if(result.value)
+            {
+
+                var postData =  {
+                    "articleId" : articleId
+                }
+
+                $.ajax({
+                    contentType : "application/x-www-form-urlencoded",
+                    type : "POST",
+                    data : postData,
+                    dataType : "json",
+                    url : "Article/ChangeBeingSpecial",
+                    success : function(data) {
+                        if(data.isSuccess == true)
+                        {
+                            Swal.fire(
+                                "موفق!",
+                                data.message,
+                                "success"
+                            ).then(() => {
+                                window.location.reload();
+                            });
+                        }
+                        else
+                        {
+                            swal.fire(
+                                "ناموفق!",
+                                value.message,
+                                "error"
+                            );
+                        }
+                    },
+                    error : function(xhr, status, error) {
+                        alert(xhr.responseText);
+                    }
+
+
+                });
+
+            }
+        });
+    }
+
+
+
+    function SubmitSize()
+    {
+        $("#pageSizeSelect").on("change", function () {
+            $("#submitSize").click();
+        });
+    }
+
+
+
+
+</script>
+
+
+
+
+}

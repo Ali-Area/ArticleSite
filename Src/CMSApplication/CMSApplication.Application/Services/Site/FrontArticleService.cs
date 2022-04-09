@@ -114,6 +114,8 @@ namespace CMSApplication.Application.Services.Site
                 Visit = article.Visite
             };
 
+            article.Visite += 1;
+            _context.SaveChanges();
 
             return Tools.ReturnResult(true, "", articleDetails);
 
